@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<!-- 國小社會-平衡環境與發展　版本 1.4 -->
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>國小社會-平衡環境與發展 v1.4</title>
+<style>
+:root{--bg:#f4f1e8;--card:#fffdf7;--tx:#2b2a26;--mu:#6d6a60;--ac:#2f7d5b;--bd:#d9d3c0;--bad:#c0452f;--good:#2f7d5b;--lock:#ebe7da;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1b1d1a;--card:#262925;--tx:#ece8da;--mu:#a29e90;--ac:#5fbf93;--bd:#3d4039;--bad:#ef7b64;--good:#6fd0a3;--lock:#2f322d;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1b1d1a;--card:#262925;--tx:#ece8da;--mu:#a29e90;--ac:#5fbf93;--bd:#3d4039;--bad:#ef7b64;--good:#6fd0a3;--lock:#2f322d;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.6}
+.wrap{max-width:980px;margin:0 auto;padding:16px}#start{max-width:720px;margin:0 auto}.gm{display:grid;grid-template-columns:1fr 250px;gap:12px;align-items:start}.pol{position:sticky;top:8px;max-height:calc(100vh - 16px);overflow-y:auto}.po{display:block;width:100%;text-align:left;margin:6px 0;padding:8px 10px}.po .cd{font-size:.82rem}.po.lk{background:var(--lock);color:var(--mu);opacity:.5;filter:grayscale(1);cursor:not-allowed}#pmsg{margin-top:8px;font-size:.88rem}@media (prefers-reduced-motion:reduce){.pop{animation:none}}.sea{fill:#a9d6ec}#map .o [fill]:not([fill="none"]){stroke:#3a3a3a;stroke-width:1;stroke-linejoin:round;stroke-linecap:round}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .sea{fill:#2b5470}}:root[data-theme="dark"] .sea{fill:#2b5470}@keyframes pop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}.pop{animation:pop .55s ease-out;transform-box:fill-box;transform-origin:50% 100%}.pp{display:flex;justify-content:space-between;align-items:center;width:100%;margin:5px 0;padding:8px 10px;font-weight:700}.pp.on{background:var(--ac);color:#fff;border-color:var(--ac)}.pc{margin:2px 0 8px 6px;border-left:3px solid var(--bd);padding-left:6px}@media(max-width:760px){.gm{grid-template-columns:1fr}.pol{position:static;max-height:none}}
+h1{font-size:1.5rem;margin:.2em 0}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px;margin:12px 0}
+.mu{color:var(--mu);font-size:.9rem}
+input[type=text]{width:100%;padding:10px;font-size:1.1rem;border:1px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx)}
+button{font:inherit;cursor:pointer;border-radius:10px;border:1px solid var(--bd);background:var(--card);color:var(--tx);padding:8px 14px}
+button.pri{background:var(--ac);color:#fff;border-color:var(--ac);font-weight:700;padding:10px 20px}
+button:disabled{opacity:.45;cursor:not-allowed}
+.row{display:flex;align-items:center;gap:8px;margin:6px 0}
+.row .nm{width:6.5em;flex:none}
+.bar{flex:1;height:12px;background:var(--lock);border-radius:6px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--ac);transition:width .5s}
+.row .v{width:2.6em;text-align:right;font-variant-numeric:tabular-nums;flex:none}
+.dl{width:3em;font-size:.85rem;flex:none}
+.up{color:var(--good)}.dn{color:var(--bad)}
+.tl{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:8px}
+.tl span{font-size:.75rem;padding:2px 8px;border-radius:99px;border:1px solid var(--bd);color:var(--mu)}
+.tl .on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.tl .ok{background:var(--lock)}
+.opt{display:block;width:100%;text-align:left;margin:8px 0;padding:12px}
+.opt b{font-size:1.05rem}
+.opt.lk{background:var(--lock);color:var(--mu);opacity:.5;filter:grayscale(1);cursor:not-allowed}.opt.lk b{text-decoration:line-through}.lkt{font-size:.8rem;color:var(--ac)}.res.lnk{border-left-color:var(--bad)}
+.opt .cd{font-size:.85rem}
+.era{font-size:.85rem;color:var(--ac);font-weight:700}
+.hide{display:none}
+.res{border-left:4px solid var(--ac);padding-left:12px;margin:10px 0}
+.gl{background:var(--lock);border-radius:10px;padding:8px 12px;margin:10px 0;font-size:.92rem}.gl b{color:var(--ac)}.gl div{margin:3px 0}.chg span{display:inline-block;margin:2px 10px 2px 0;font-weight:700}
+.pool{font-weight:700}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>🏛️ 國小社會-平衡環境與發展 <span class="mu" style="font-size:.9rem;font-weight:400">v1.4</span></h1>
+
+<div id="start">
+ <div class="card">
+  <p>你是一位新國家的領導人！從農業時代出發，一步步帶領國家走過工業、電力、教育、民主、環保與資訊時代。每個決定都有好處，也有代價，要小心平衡<b>經濟發展</b>與<b>環境保護</b>喔！</p>
+  <p class="mu">玩法：每個事件選一個方案（灰色🔒代表條件還不夠）；「國家政策」隨時可用，但要付出代價；某項能力過低時會出現🆘國家危機。小心，前面的選擇可能影響之後的事件！</p>
+  <label>為你的國家取名：</label>
+  <input type="text" id="nm" maxlength="12" placeholder="例如：小明王國">
+ </div>
+ <div class="card">
+  <b>分配國家初始能力</b>
+  <p class="mu">七項能力總和固定為 350（每項 1～100）。可按「重新隨機」，也可用 ＋／－ 自己微調。</p>
+  <div id="alloc"></div>
+  <p>尚未分配點數：<span class="pool" id="pool">0</span></p>
+  <button onclick="rnd()">🎲 重新隨機</button>
+  <button class="pri" id="go" onclick="begin()">開始建國！</button>
+ </div>
+</div>
+
+<div id="game" class="hide"><div class="gm">
+ <div>
+  <div class="card">
+   <b id="cn"></b>
+   <div id="stats" style="margin-top:6px"></div>
+  </div>
+  <div class="card"><b id="mtitle">🗺️ 你美麗的國家</b> <span class="mu" id="mcap"></span>
+   <svg id="map" viewBox="0 0 400 260" role="img" aria-label="你美麗的國家" style="width:100%;max-height:340px;display:block;border-radius:10px;margin-top:6px"></svg>
+  </div>
+  <div class="tl" id="tl"></div>
+  <div class="card" id="ev"></div>
+ </div>
+ <aside class="card pol"><b>🏛️ 國家政策</b><div class="mu">點選想強化的能力，展開政策。每個政策最多使用 2 次：第 1 次強化大於代價，第 2 次代價大於強化；代價的參數不夠扣時，強化效果會按比例減少。部分政策（🔒）要完成特定事件或選擇後才會解鎖</div><div id="pols"></div><div id="pmsg"></div></aside>
+</div></div>
+<p class="mu" style="text-align:center;margin:18px 0 6px">國小社會-平衡環境與發展　版本 1.4</p>
+</div>
+
+<script>
+const S=[['dev','開發資源','🏗️'],['wealth','財富','💰'],['edu','教育程度','📚'],['law','民主法治','⚖️'],['joy','幸福感','😊'],['nature','自然環境','🌳'],['intl','國際觀感','🌏']];
+const N=Object.fromEntries(S.map(s=>[s[0],s[1]]));
+const $=id=>document.getElementById(id);
+let st={},flags={},idx=0,spDone={},prev={},name='',log=[],pol={},mode='',curOpts=[];
+
+/* ---------- 事件資料（可自行修改）---------- */
+// req: [能力,'>',數值]；fx: 基本增減；flag: 選擇後留下的記號（可用逗號放多個）
+// l: 連鎖效應 [[先前選擇的記號, 額外增減, 說明文案],...]，先前選過才會生效
+const EV0=[
+{era:'農業時代',title:'發展農業',txt:'國內仍有大量土地荒廢無法利用，請問你想怎麼做，讓農田能夠復耕回復生產呢？',opts:[
+ {n:'興修水利',req:[['wealth','>',15]],fx:{dev:12,wealth:-6},flag:'irrigation',res:'您成功建造了水圳，讓漫漫荒野變成沃田千里的農田。'},
+ {n:'土地改革',req:[['law','>',20]],fx:{dev:15,joy:-10,wealth:4},flag:'landreform',res:'土地重新分配給農民，生產力大增，但部分地主很不高興。'},
+ {n:'生產化肥',req:[['wealth','>',35]],fx:{dev:22,wealth:-10},flag:'fertilizer',res:'化肥工廠開工了，農作物的收成翻了一倍！'},
+ {n:'農業學校',req:[['edu','>',20]],fx:{dev:10,edu:6,wealth:-4},flag:'agschool',res:'農夫們學會了輪作與選種，田裡的收成越來越好。'},
+ {n:'靠天吃飯',req:[],fx:{dev:2,joy:-8,wealth:-3},flag:'weather',res:'你決定順其自然，收成時好時壞，人民開始擔心。'}]},
+{era:'工業革命',title:'機器的轟隆聲',txt:'鄰國的蒸汽機和工廠讓他們快速致富。你的國家也想跟上腳步，要發展哪一種產業呢？',opts:[
+ {n:'興建紡織工廠',req:[['dev','>',20]],fx:{wealth:18,nature:-14,joy:-3},flag:'factory',res:'煙囪冒出滾滾黑煙，布料大量出口，國庫豐盈了，但河水開始變得混濁。'},
+ {n:'開採煤礦',req:[['dev','>',25]],fx:{wealth:24,nature:-20,dev:-8},flag:'factory,mine',res:'煤礦帶來巨額財富，可是山林被挖空，空氣也變髒了。'},
+ {n:'興建鐵路',req:[['wealth','>',20],['dev','>',20]],fx:{dev:12,wealth:-10,intl:3,nature:-6},flag:'railway',res:'火車嗚嗚駛過，貨物與人民往來更方便，國家連成一氣。'},
+ {n:'發展手工藝',req:[['edu','>',15]],fx:{wealth:6,edu:3,joy:-2},flag:'craft',res:'精緻的手工藝品深受遊客喜愛，賺得不多，環境卻沒被破壞。'},
+ {n:'維持農業社會',req:[],fx:{joy:2,wealth:-6,intl:-3},flag:'stayfarm',res:'人民過著寧靜的田園生活，但國家發展慢了下來。'}]},
+{era:'都市化',title:'人口湧入城市',txt:'工廠吸引大量農村人口搬進城市，街道擁擠、污水直接排進河川，居民開始抱怨。',opts:[
+ {n:'興建污水處理廠',req:[['wealth','>',20]],fx:{nature:12,wealth:-10},flag:'sewage',res:'污水處理廠讓河水重新變清澈，不過每年都需要維護費用。',
+  l:[['fertilizer',{wealth:-8,nature:-4},'農田的化肥流入河川，污水廠要多處理一倍的肥水，維護費大增！']]},
+ {n:'興建公共住宅',req:[['wealth','>',20],['law','>',20]],fx:{joy:12,wealth:-12},flag:'housing',res:'新社區讓勞工家庭有了安全的家，大家笑得很開心。',
+  l:[['railway',{joy:5,wealth:3},'鐵路沿線通勤方便，新住宅大受歡迎。']]},
+ {n:'設立衛生所',req:[['edu','>',20]],fx:{joy:10,edu:3,wealth:-7},flag:'clinic',res:'傳染病減少了，市民更健康，也更信任政府。',
+  l:[['factory',{joy:-5,wealth:-4},'工廠污染讓病人特別多，衛生所不堪負荷。']]},
+ {n:'放任城市自由發展',req:[],fx:{wealth:6,nature:-12,joy:-8},flag:'ignore',res:'城市雖然更熱鬧，但垃圾與臭味越來越嚴重。'}]},
+{era:'電力時代',title:'點亮全國的電',txt:'有了電，工廠和家庭的生活會大大改變。你要用什麼方式發電呢？',opts:[
+ {n:'興建火力發電廠',req:[['dev','>',20]],fx:{wealth:14,dev:10,nature:-18},flag:'thermal',res:'電廠日夜運轉，全國亮起了燈，但天空多了一層灰霾。',
+  l:[['mine',{wealth:8},'自家煤礦提供便宜的燃料，發電成本降低。'],['ignore',{nature:-6,joy:-4},'都市早已污濁，電廠的廢氣讓空氣雪上加霜。']]},
+ {n:'興建水力發電廠',req:[['wealth','>',25]],fx:{dev:12,nature:-10,wealth:-10},flag:'hydro',res:'大壩攔住河水發電，電力穩定，但魚群的家被改變了。',
+  l:[['irrigation',{dev:6,wealth:4},'先前興建的水圳可以共用水利設施，工程費省不少。']]},
+ {n:'興建核能電廠',req:[['edu','>',30],['wealth','>',30]],fx:{dev:28,wealth:-14,intl:-4},flag:'nuclear',res:'核電廠發電效率超高，電力充足！不過人民也擔心萬一發生意外……'},
+ {n:'向鄰國買電',req:[['wealth','>',15]],fx:{wealth:-10,dev:10,intl:3},flag:'import',res:'靠鄰國供電解決了燃眉之急，但電價不便宜。'},
+ {n:'呼籲節約用電',req:[],fx:{joy:-6,nature:3,dev:3,wealth:2},flag:'saveE',res:'大家省著用電，環境好一點，但生活有些不方便。'}]},
+{era:'教育普及',title:'讓每個孩子都能讀書',txt:'工廠需要懂得操作機器的工人，家長也希望孩子有更好的未來。',opts:[
+ {n:'實施義務教育',req:[['wealth','>',20]],fx:{edu:16,wealth:-10,joy:3},flag:'compulsory',res:'每個孩子都背起書包上學，國家的未來充滿希望！',
+  l:[['landreform',{edu:8,joy:3},'農民有了自己的土地，更願意讓孩子上學。'],['agschool',{edu:4},'農業學校的老師轉任小學，師資更充足。']]},
+ {n:'創辦大學',req:[['wealth','>',25],['edu','>',20]],fx:{edu:14,intl:6,wealth:-12},flag:'uni',res:'大學培養出工程師與科學家，也吸引外國學者來交流。',
+  l:[['nuclear',{edu:6,intl:3},'核能電廠需要大量工程人才，大學理工科大受歡迎。']]},
+ {n:'設立職業學校',req:[['dev','>',20]],fx:{edu:9,wealth:2,dev:3},flag:'voc',res:'年輕人學會一技之長，很快就找到工作。',
+  l:[['factory',{dev:5,wealth:4},'工廠急需技術工人，畢業生很快就業。']]},
+ {n:'開辦夜間識字班',req:[],fx:{edu:5,joy:1,wealth:-2},flag:'night',res:'大人白天工作、晚上讀書，識字的人越來越多。'}]},
+{era:'民主法治',title:'制定國家的規則',txt:'國家越來越大，人民希望有公平的規則，保障每個人的權利。',opts:[
+ {n:'制定憲法',req:[['edu','>',20]],fx:{law:16,intl:5,wealth:-3},flag:'constitution',res:'憲法寫下人民的權利與政府的責任，國家邁向民主。',
+  l:[['landreform',{law:6},'土地改革讓農民有公民意識，支持民主制度。'],['compulsory',{law:5},'受過教育的人民更懂得保障自己的權利。']]},
+ {n:'訂立勞工保護法',req:[['law','>',20]],fx:{joy:12,wealth:-8,law:5},flag:'labor',res:'工人有了合理的工時與工資，笑容變多了，但老闆的成本增加。',
+  l:[['factory',{wealth:-6,joy:4},'工廠主人反彈，企業成本上升，但勞工更有保障。']]},
+ {n:'設立獨立法院',req:[['edu','>',30]],fx:{law:12,intl:3,wealth:-6},flag:'court',res:'法官公平審判，人民相信「法律面前人人平等」。',
+  l:[['ignore',{law:5,nature:3},'法院受理污染訴訟，讓過去放任的行為被糾正。']]},
+ {n:'加強治安巡邏',req:[],fx:{law:3,joy:-6,wealth:-2},flag:'police',res:'街頭更安全了，但有人覺得被監視。'}]},
+{era:'交通建設',title:'連接世界的道路',txt:'要讓貨物和人流動得更快，國家需要更完善的交通網路。',opts:[
+ {n:'興建高速公路',req:[['wealth','>',20],['dev','>',20]],fx:{dev:8,wealth:8,nature:-12},flag:'highway',res:'車流飛快穿梭，物流效率大增，但農田與森林被切成了兩半。',
+  l:[['railway',{wealth:-6},'公路與鐵路搶生意，鐵路公司虧損，政府需要補貼。']]},
+ {n:'興建高速鐵路',req:[['wealth','>',35],['edu','>',30]],fx:{wealth:-10,intl:5,joy:8,nature:-3,dev:6},flag:'hsr',res:'高鐵讓城市之間變得很近，也比較省能源！',
+  l:[['railway',{wealth:10,dev:4},'可以沿用既有鐵路的路權與經驗，興建成本大幅降低！']]},
+ {n:'擴建國際港口',req:[['dev','>',30]],fx:{wealth:14,intl:6,nature:-8,dev:-6},flag:'port',res:'貨輪來來往往，國際貿易蓬勃發展。',
+  l:[['railway',{wealth:6},'鐵路直達港口，貨物運送更迅速。'],['factory',{wealth:6},'工廠的貨品有了出口管道，生意興隆。']]},
+ {n:'推廣腳踏車與公車',req:[],fx:{nature:3,joy:1,wealth:-2},flag:'bike',res:'街上多了腳踏車，空氣也清新了一點。'}]},
+{era:'環保覺醒',title:'地球在生病',txt:'科學家發現污染讓氣候變得異常，人民開始要求政府保護環境。',opts:[
+ {n:'制定環境保護法',req:[['law','>',20]],fx:{nature:12,wealth:-8,intl:5},flag:'envlaw',res:'工廠必須遵守排放標準，天空漸漸恢復藍色。',
+  l:[['ignore',{wealth:-8,joy:-3},'過去放任污染，累積的問題需要加倍整治，成本很高。'],['thermal',{wealth:-8,joy:-4},'火力電廠業者強烈反對，政府必須付出補貼。'],['sewage',{nature:5},'河川早已整治過，環保工作更順利。']]},
+ {n:'徵收碳稅',req:[['law','>',30],['edu','>',30]],fx:{nature:14,wealth:-6,joy:-6,intl:6},flag:'carbon',res:'排放越多、繳稅越多，企業開始主動減少污染。',
+  l:[['thermal',{wealth:-10,joy:-5},'火力發電占比很高，電價大漲，民怨四起。'],['highway',{joy:-6,wealth:-4},'民眾習慣開車，對加稅非常不滿。'],['nuclear',{nature:5,wealth:4},'核能幾乎不排碳，稅收壓力小。']]},
+ {n:'發展再生能源',req:[['wealth','>',30],['edu','>',30]],fx:{dev:12,nature:10,wealth:-12,intl:5},flag:'renew',res:'太陽能板與風力發電機佇立在山丘與海岸，既乾淨又永續。',
+  l:[['hydro',{dev:6,nature:3},'已經有水力發電的基礎，電網改造容易。'],['nuclear',{wealth:-8},'核能與再生能源搶電網資源，造成重複投資。'],['thermal',{wealth:-6},'火力電廠必須提早除役，產生損失。']]},
+ {n:'發起植樹造林',req:[],fx:{nature:8,wealth:-4,joy:1},flag:'trees',res:'全民一起種下百萬棵樹，大地重新披上綠衣。',
+  l:[['fertilizer',{nature:-4},'長期使用化肥使土壤酸化，樹苗成活率低。'],['sewage',{nature:4},'乾淨的水源讓樹苗長得更好。']]}]},
+{era:'資訊時代',title:'網路改變一切',txt:'電腦與網路讓世界連成一片，新的產業正在誕生。',opts:[
+ {n:'設立科學園區',req:[['edu','>',30],['wealth','>',30]],fx:{wealth:22,dev:-8,intl:6,nature:-6},flag:'sciencepark',res:'小小晶片帶來大大財富，成為全球供應鏈的關鍵角色。',
+  l:[['irrigation',{joy:-20,nature:-10,wealth:-10},'水圳早已供應全國的農業用水，園區大量用水造成嚴重缺水，農田和居民都受到影響！'],['nuclear',{wealth:10},'核電提供穩定又大量的電力，園區運作順暢。'],['import',{wealth:-10,intl:-3},'電力依賴進口，一旦鄰國減供就受制於人。'],['uni',{wealth:10,intl:4},'大學培養了大量高階人才，園區人才不缺。'],['compulsory',{wealth:6},'受過基礎教育的勞動力，讓園區招募容易。'],['thermal',{nature:-6},'火力發電的污染讓園區周邊空氣變差。']]},
+ {n:'推動網路教育',req:[['edu','>',20]],fx:{edu:12,joy:4,wealth:-4},flag:'netedu',res:'偏鄉的孩子也能透過網路上好老師的課。',
+  l:[['compulsory',{edu:6},'義務教育打好基礎，網路學習更有效率。'],['night',{edu:4},'夜間識字班的學員成了網路學習的第一批學生。']]},
+ {n:'打造智慧城市',req:[['wealth','>',35],['edu','>',30]],fx:{joy:10,nature:6,wealth:-12,dev:6},flag:'smartcity',res:'智慧路燈與節能系統讓城市更舒適、更節能。',
+  l:[['housing',{joy:6,wealth:4},'公共住宅社區成為智慧城市最佳的試辦場域。'],['highway',{nature:-4},'城市規劃被高速公路切割，整合困難。'],['renew',{nature:5,wealth:5},'再生能源讓智慧城市真的做到低碳。']]},
+ {n:'成立數位政府',req:[['law','>',25],['edu','>',25]],fx:{law:12,joy:5,wealth:-3},flag:'egov',res:'人民在家就能辦理公文，政府更公開透明。',
+  l:[['constitution',{law:6},'完備的憲法使數位政府制度更穩固。'],['court',{law:4},'獨立法院保障人民的個資與隱私。']]},
+ {n:'維持傳統產業',req:[],fx:{wealth:1,intl:-6,joy:-3},flag:'trad',res:'傳統產業穩定經營，卻漸漸落後於其他國家。',
+  l:[['stayfarm',{joy:3,wealth:3},'你一路堅守傳統，反而保住了傳統產業的優勢。']]}]},
+{era:'地球村',title:'國際氣候高峰會',txt:'各國領袖聚在一起討論氣候變遷，大家都在看你的國家要做出什麼承諾。',opts:[
+ {n:'承諾大幅減碳',req:[['law','>',20]],fx:{intl:14,wealth:-8,nature:8},flag:'pledge',res:'你的國家成為環保模範生，受到世界各國尊敬。',
+  l:[['thermal',{wealth:-8,intl:-4},'火力電廠比例太高，減碳目標難以達成，被國際批評。'],['carbon',{intl:6},'已有碳稅制度，承諾更有說服力。'],['renew',{intl:5,nature:3},'再生能源已有成果，承諾可信度高。']]},
+ {n:'提供技術援助',req:[['edu','>',30]],fx:{intl:12,wealth:-8,edu:3},flag:'aid',res:'你與開發中國家分享環保技術，建立深厚友誼。',
+  l:[['sciencepark',{intl:6,wealth:6},'科學園區的技術備受各國肯定。'],['uni',{intl:4},'大學的研究成果是最好的名片。']]},
+ {n:'只談經濟合作',req:[],fx:{wealth:8,intl:-10,nature:-8},flag:'econonly',res:'你只關心賺錢，其他國家對你的態度冷淡下來。',
+  l:[['coverup',{intl:-8},'當年隱瞞污染的事被國際媒體挖出來，信譽大受影響！'],['mine',{nature:-4},'煤礦的碳排放被點名批評。']]}]}
+];
+// 特殊事件：條件成立時插入（每個只會發生一次）
+const SP=[
+{era:'⚠️ 突發事件',title:'酸雨與河川污染',cond:()=>(flags.factory||flags.thermal||flags.heavy||flags.petro)&&st.nature<=65,txt:'工廠與電廠排放的廢氣造成酸雨，河裡的魚大量死亡，人民很生氣！',opts:[
+ {n:'設立環保局',req:[['law','>',20]],fx:{nature:12,wealth:-8,law:3},flag:'epa',res:'環保局開始稽查工廠，空氣與河水慢慢改善。'},
+ {n:'要求工廠加裝過濾設備',req:[['wealth','>',25]],fx:{nature:8,wealth:-10,intl:3},flag:'filter',res:'煙囪不再冒黑煙，工廠成本增加但環境變好。'},
+ {n:'補償受害居民',req:[['wealth','>',20]],fx:{joy:8,wealth:-12},flag:'compensate',res:'居民拿到補償，但污染問題還在。'},
+ {n:'假裝沒事',req:[],fx:{wealth:3,nature:-12,joy:-12,law:-10},flag:'coverup',res:'你選擇隱瞞，人民對政府失去信任。'}]},
+{era:'⚠️ 突發事件',title:'核電廠意外！',cond:()=>flags.nuclear&&idx>=7&&Math.random()<0.12,txt:'核電廠發生了冷卻系統故障，雖然機率極低，卻真的發生了！你必須立刻做決定。',opts:[
+ {n:'緊急停機並疏散居民',req:[['wealth','>',20]],fx:{joy:-10,wealth:-18,nature:-6,intl:3},res:'居民及時撤離沒人受傷，但電廠必須花大錢整修。'},
+ {n:'公開資訊並接受國際協助',req:[['law','>',25]],fx:{intl:5,nature:-8,joy:-8,law:3},res:'國際專家迅速到場協助，危機順利化解。'},
+ {n:'隱瞞消息',req:[],fx:{nature:-24,joy:-18,intl:-18,law:-12},flag:'coverup',res:'消息還是傳了出去，國內外一片譁然。'}]},
+{era:'⚠️ 突發事件',title:'人民上街抗議',cond:()=>st.joy<35,txt:'人民的生活過得不快樂，大批民眾走上街頭，要求政府改善。',opts:[
+ {n:'召開公民座談會',req:[['law','>',20]],fx:{joy:8,law:5,wealth:-5},res:'你誠懇傾聽大家的意見，抗議平息了。'},
+ {n:'提高社會福利',req:[['wealth','>',20]],fx:{joy:12,wealth:-14},res:'福利增加，大家的笑容回來了，國庫卻變少了。'},
+ {n:'強力鎮壓',req:[],fx:{joy:-12,law:-14,intl:-10},res:'街頭暫時安靜，但人民心中充滿怨氣，國際也在批評。'}]}
+];
+
+/* ---------- 專有名詞小知識（可自行修改）---------- */
+const GL={
+'興修水利':[['水圳','人工挖出來的水道，把河水引到田地灌溉。'],['灌溉','用人工方式把水送到農田，讓作物不缺水。']],
+'土地改革':[['土地改革','政府重新分配土地，讓更多農民擁有自己的田。'],['地主','擁有大量土地，再把土地租給別人耕種的人。']],
+'生產化肥':[['化肥','用化學方法製造的肥料，能讓作物長得又快又大。'],['優養化','水中養分太多，藻類暴增，水裡缺氧，魚蝦就會死亡。']],
+'農業學校':[['輪作','按照季節或年度輪流種植不同作物，藉以保留土地的養分和地力。'],['選種','挑選優質的作物後代種子留種，讓下一次的作物更強壯、產量與品質增加。']],
+'靠天吃飯':[['靠天吃飯','農業完全依賴天氣，雨水或氣溫不好就會歉收。'],['歉收','收成比平常少很多。']],
+'興建紡織工廠':[['工業革命','十八世紀起，機器取代人力，可以大量生產商品，社會快速改變。'],['紡織','把棉、毛等纖維紡成線，再織成布料。']],
+'開採煤礦':[['煤','遠古植物長期埋在地下形成的燃料，燃燒會產生二氧化碳和污染物。'],['化石燃料','煤、石油、天然氣等由古代生物形成的能源，用完就不能再生。']],
+'興建鐵路':[['蒸汽火車','燒煤把水煮成蒸氣，用蒸氣的力量推動前進的火車。'],['路權','政府或公司可以使用某段土地來鋪設鐵路或道路的權利。']],
+'發展手工藝':[['手工藝','靠雙手和簡單工具製作的產品，每一件都有自己的特色。'],['觀光產業','靠遊客吃、住、買紀念品來賺錢的產業。']],
+'維持農業社會':[['農業社會','多數人口都在務農，生活跟著季節變化。'],['自給自足','生產的東西主要自己使用，不太跟外面買賣。']],
+'興建污水處理廠':[['污水處理','用過濾、沉澱和微生物分解髒東西，讓水變乾淨再排放。'],['維護成本','機器和設施需要持續花錢保養、修理與運轉。']],
+'興建公共住宅':[['公共住宅','由政府興建，以較低價格租給民眾的住宅。'],['通勤','每天往返住家與工作地點。']],
+'設立衛生所':[['傳染病','會透過空氣、水或接觸傳給別人的疾病。'],['公共衛生','保護全體國民健康的措施，例如疫苗、乾淨的飲用水。']],
+'放任城市自由發展':[['都市化','人口從鄉村向城市集中的現象。'],['環境負荷','環境能承受人類活動的限度，超過了環境就會惡化。']],
+'興建火力發電廠':[['火力發電','燃燒煤、石油或天然氣產生蒸氣，推動發電機發電。'],['溫室氣體','二氧化碳等會讓地球變暖的氣體。']],
+'興建水力發電廠':[['水力發電','利用水從高處流下的力量來轉動發電機。'],['水壩','攔住河水、儲存水的大型建築。']],
+'興建核能電廠':[['核分裂','原子核分裂時會釋放巨大的熱能，用來燒水發電。'],['核廢料','核電廠用過的燃料，輻射很強，必須長期安全保管。']],
+'向鄰國買電':[['電網','把電送到各地的輸電線路與設備系統。'],['能源安全','國家能穩定取得足夠能源的能力。']],
+'呼籲節約用電':[['節能','減少不必要的用電，省電也是在節省資源。'],['尖峰用電','一天之中用電最多的時段，這時候電力最吃緊。']],
+'實施義務教育':[['義務教育','國家規定孩子一定要接受、而且由政府提供的基本教育。'],['識字率','能讀寫文字的人占全體人口的比例。']],
+'創辦大學':[['大學','提供高深學問與研究的學校。'],['學術交流','各國學者互相分享研究成果。']],
+'設立職業學校':[['技職教育','教導機械、護理等實用技能的教育。'],['技術工人','擁有專門技能的勞動者。']],
+'開辦夜間識字班':[['文盲','不會閱讀和書寫文字的人。'],['終身學習','不管幾歲，都持續學習新知識。']],
+'制定憲法':[['憲法','國家最高的法律，規定政府的權力與人民的權利。'],['民主','重要的事情由人民投票，或選出代表來決定。']],
+'訂立勞工保護法':[['勞動基準','對工時、工資、休息時間等的最低保障規定。'],['勞工','靠勞力或技術受雇工作的人。']],
+'設立獨立法院':[['三權分立','把權力分成立法、行政、司法三部分，彼此監督制衡。'],['司法獨立','法官審判案件時，不受政府或其他人干預。']],
+'加強治安巡邏':[['治安','社會秩序與人民生活安全的狀況。'],['隱私權','個人生活與個人資料不被隨意侵犯的權利。']],
+'興建高速公路':[['高速公路','專供汽車高速行駛的道路，沒有紅綠燈和平交道。'],['棲地破碎化','道路把動物的家切成好幾塊，動物很難自由移動。']],
+'興建高速鐵路':[['高速鐵路','時速可達 250 公里以上的鐵路運輸。'],['運量','交通工具一次能載運的旅客或貨物數量。']],
+'擴建國際港口':[['國際貿易','不同國家之間互相買賣商品。'],['貨櫃','標準大小的鐵箱，方便裝卸與運送貨物。']],
+'推廣腳踏車與公車':[['大眾運輸','公車、捷運等許多人共乘的交通方式。'],['低碳運輸','排放二氧化碳比較少的交通方式。']],
+'制定環境保護法':[['環境保護法','規定企業與人民不能亂排放污染的法律。'],['排放標準','規定污染物最多可以排出的數量。']],
+'徵收碳稅':[['碳稅','對排放二氧化碳的行為課的稅，排得越多繳得越多。'],['碳足跡','個人或產品在生產、使用過程中排放的二氧化碳總量。']],
+'發展再生能源':[['再生能源','太陽、風、水流等可以不斷再生的能源。'],['太陽能板','把陽光轉變成電力的裝置。']],
+'發起植樹造林':[['碳匯','能吸收並儲存二氧化碳的森林、海洋等。'],['水土保持','種植植物、固定土壤，防止泥土被沖走。']],
+'設立科學園區':[['半導體','製作晶片的材料，是手機、電腦的核心零件。'],['供應鏈','從原料、生產到送到消費者手中的整個網絡。']],
+'推動網路教育':[['數位學習','利用網路和電腦來進行的學習。'],['數位落差','城鄉或貧富之間，使用網路資源能力的差距。']],
+'打造智慧城市':[['智慧城市','用感測器與資料，讓交通、用電、治安更有效率的城市。'],['物聯網','讓各種物品透過網路連線，互相傳送資料。']],
+'成立數位政府':[['電子化政府','透過網路提供公文、申請等服務的政府。'],['個資','可以辨識出個人身分的資料，例如姓名、身分證字號。']],
+'維持傳統產業':[['傳統產業','長期存在、以人力與傳統技術為主的產業。'],['產業升級','用新技術提升產品價值與生產效率。']],
+'承諾大幅減碳':[['氣候變遷','地球長期的氣溫與天氣型態發生改變。'],['巴黎協定','2015年各國同意共同限制全球暖化的國際協議。']],
+'提供技術援助':[['技術援助','把技術與經驗分享給其他國家。'],['永續發展','滿足現在的需求，同時不損害後代子孫的資源。']],
+'只談經濟合作':[['國際形象','其他國家對一個國家的看法和信任程度。'],['國際合作','各國為了共同目標一起努力。']],
+'設立環保局':[['環保局','專門稽查污染、執行環保法律的政府機關。'],['稽查','檢查有沒有違反規定。']],
+'要求工廠加裝過濾設備':[['空氣污染防制設備','裝在煙囪上，過濾有害微粒與氣體的裝置。'],['酸雨','廢氣裡的硫和氮溶進雨水，形成酸性的雨，會傷害植物和建築。']],
+'補償受害居民':[['損害賠償','造成別人損失時，需要用金錢彌補。'],['公害','污染造成大眾健康或生活受到傷害。']],
+'假裝沒事':[['資訊透明','政府主動公開真實的資訊。'],['公信力','人民相不相信政府說的話。']],
+'緊急停機並疏散居民':[['冷卻系統','用水等方式帶走反應爐的熱量，避免過熱。'],['疏散','把居民有秩序地帶到安全的地方。']],
+'公開資訊並接受國際協助':[['國際原子能總署','協助各國安全使用核能的國際組織。'],['輻射','看不見的能量，劑量太高會傷害人體。']],
+'隱瞞消息':[['輻射','看不見的能量，劑量太高會傷害人體。'],['危機處理','事件發生時，快速而正確地降低傷害。']],
+'召開公民座談會':[['公民參與','人民參與討論與決定公共事務。'],['民意','大多數人民的意見與想法。']],
+'提高社會福利':[['社會福利','政府幫助弱勢、提升生活品質的措施，例如健保。'],['稅收','政府向人民與企業收取的錢，用在公共建設上。']],
+'強力鎮壓':[['人權','每個人天生就有、應該被尊重的基本權利。'],['言論自由','人民可以自由表達意見的權利。']]
+};
+
+/* ---------- 危機救援選項：某項能力過低時，可用高的強項換取補救 ---------- */
+const RS=[
+{n:'封山保育',rs:1,t:'nature',show:()=>st.nature<35,req:[['law','>',50]],fx:{nature:25,law:-25,wealth:-5},res:'政府宣布封山，禁止開發與砍伐，山林慢慢長回來，但有些人失去了靠山吃飯的工作。'},
+{n:'還田於河',rs:1,t:'nature',show:()=>st.nature<35,req:[['law','>',45],['dev','>',45]],fx:{nature:20,dev:-15,law:-10},res:'堤防後退、農田還給河川，濕地與魚群回來了，但人民必須搬家、放棄部分田地。'},
+{n:'退耕還林',rs:1,t:'nature',show:()=>st.nature<35,req:[['edu','>',50]],fx:{nature:18,dev:-12,wealth:-6},res:'坡地上不適合耕種的田改種樹木，水土保持好轉，農產量也跟著減少。'},
+{n:'引進環保科技',rs:1,t:'nature',show:()=>st.nature<35,req:[['edu','>',55],['wealth','>',40]],fx:{nature:20,edu:-10,wealth:-10},res:'科學家與工程師投入淨化技術，污染大幅降低，但研究與設備花費驚人。'},
+{n:'國際環保合作',rs:1,t:'nature',show:()=>st.nature<35,req:[['intl','>',55]],fx:{nature:16,intl:-15,wealth:-4},res:'國際環保組織來協助整治，但你也得接受外國的監督與要求。'},
+{n:'發展觀光',rs:1,t:'wealth',show:()=>st.wealth<35,req:[['nature','>',55]],fx:{wealth:22,nature:-12,joy:3},res:'美麗的山水吸引大批遊客，帶來財富，但遊客太多也讓環境受到壓力。'},
+{n:'輸出技術',rs:1,t:'wealth',show:()=>st.wealth<35,req:[['edu','>',55]],fx:{wealth:22,edu:-12},res:'你的工程師被各國高薪聘請，帶回大筆外匯，但國內的人才也流失了。'},
+{n:'招商引資',rs:1,t:'wealth',show:()=>st.wealth<35,req:[['intl','>',55]],fx:{wealth:22,intl:-15,law:-5},res:'外國企業來設廠，帶來資金，但也要給他們許多優惠。'},
+{n:'開放資源開採',rs:1,t:'wealth',show:()=>st.wealth<35,req:[['dev','>',55]],fx:{wealth:25,dev:-20,nature:-10},res:'國家的礦產與木材大量出口，換來財富，資源卻越挖越少。'},
+{n:'募集愛國公債',rs:1,t:'wealth',show:()=>st.wealth<35,req:[['joy','>',55]],fx:{wealth:20,joy:-15},res:'人民願意借錢給國家度過難關，但未來必須還本付息，民眾也有些壓力。'}
+];
+Object.assign(GL,{
+'封山保育':[['封山育林','禁止人們進入砍伐或開發，讓山林自己慢慢恢復。'],['生態保育','保護動植物與牠們生活的環境，不讓物種消失。']],
+'還田於河':[['河川復育','讓被占用的河道和濕地恢復原貌，讓水與生物重新有家。'],['濕地','水淺又長滿水生植物的地方，可以淨化水、讓許多生物居住。']],
+'退耕還林':[['退耕還林','把不適合耕種的坡地農田，改種樹木。'],['水土流失','雨水沖走土壤，造成山坡崩塌或河川淤積。']],
+'引進環保科技':[['環保科技','用科學方法處理污染，例如淨水、除臭、回收。'],['研發','研究與發展新技術，需要投入很多時間與金錢。']],
+'國際環保合作':[['國際環保組織','由許多國家一起合作、保護地球環境的團體。'],['監督','檢查你是否真的遵守承諾。']],
+'發展觀光':[['生態旅遊','在保護自然的前提下，帶遊客認識山水與生態。'],['環境承載量','一個地方在不被破壞下，最多能容納的人數或活動量。']],
+'輸出技術':[['技術輸出','把自己的技術賣給或教給別的國家。'],['人才外流','優秀的人才離開自己的國家，到外國工作。']],
+'招商引資':[['外資','外國企業或外國人投入的資金。'],['租稅優惠','政府減免部分稅金，吸引企業來投資。']],
+'開放資源開採':[['天然資源','大自然提供的礦產、森林、水等資源，用完就沒有了。'],['不可再生','用掉之後無法在短時間內恢復的資源。']],
+'募集愛國公債':[['公債','政府向人民借錢所發行的證書，到期要還本金與利息。'],['財政','政府賺錢與花錢的管理。']]
+});
+
+/* ---------- 國家政策：整場遊戲隨時可用，但都有代價 ---------- */
+const PO=[
+// k：所屬母按鈕（強化的能力）；fx：效果；g：小知識
+{k:'dev',n:'強徵民工',fx:{dev:18,law:-18},g:['徭役','政府強迫人民無償為國家做工，能快速完成建設，卻會犧牲人民的自由與權利。']},
+{k:'dev',n:'開墾山坡地',fx:{dev:14,nature:-14},g:['山坡地開發','把山坡上的土地開闢成農田或建地，但容易造成水土流失。']},
+{k:'dev',n:'興辦國營事業',fx:{dev:12,wealth:-12},g:['國營事業','由政府出錢經營的企業，例如電力、鐵路、石油。']},
+{k:'dev',n:'以工代賑',fx:{dev:9,joy:3,wealth:-12},g:['以工代賑','政府雇用失業的人去做公共工程，讓他們有工資可以生活。']},
+{k:'wealth',n:'強制徵稅',fx:{wealth:18,law:-18},g:['苛捐雜稅','不合理地強行徵收過多的稅金，國庫變富了，人民卻不滿。']},
+{k:'wealth',n:'外國貸款',fx:{wealth:22,intl:-22},g:['外債','向外國借來的錢，之後要連本帶利還，欠太多會被外國牽制。']},
+{k:'wealth',n:'刪除教育預算',fx:{wealth:18,edu:-18},g:['預算','政府規劃一年要賺多少、花多少錢。砍教育預算短期省錢，長遠會影響人才培養。']},
+{k:'wealth',n:'出售國有土地',fx:{wealth:14,dev:-14},g:['國有財產','屬於全體人民、由政府管理的土地與資產，賣掉就沒有了。']},
+{k:'edu',n:'強制入學',fx:{edu:10,law:-10},g:['強迫教育','不管家庭意願強迫孩子上學，能快速提高識字率，卻忽略人民的選擇權。']},
+{k:'edu',n:'設立獎學金',fx:{edu:10,wealth:-10},g:['獎學金','給成績優秀或家境困難學生的補助金，鼓勵他們繼續讀書。']},
+{k:'edu',n:'增加課業時數',fx:{edu:12,joy:-12},g:['升學主義','把考試成績與升學看得最重要的風氣，容易造成學生壓力。']},
+{k:'edu',n:'派遣留學生',fx:{edu:9,intl:3,wealth:-12},g:['留學生','到外國念書的學生，學成後帶回新知識與技術，但有些人也可能留在國外。']},
+{k:'law',n:'總統直選',fx:{law:16,wealth:-16},g:['直選','由人民直接投票選出領導人，而不是由少數人代為決定；選舉也需要花很多經費。']},
+{k:'law',n:'成立廉政機關',fx:{law:12,wealth:-12},g:['廉政','政府官員清廉、不貪汙。專責機關可以調查貪汙，但運作需要經費。']},
+{k:'law',n:'公開政府預算',fx:{law:10,dev:-10},g:['資訊公開','政府把決策與花費公開讓人民查看，不容易出現弊端，但行政程序也會變慢。']},
+{k:'law',n:'開放新聞自由',fx:{law:10,joy:-10},g:['新聞自由','媒體可以自由報導與批評政府，不受政府控制，但社會上的意見也會更吵雜。']},
+{k:'joy',n:'普發現金',fx:{joy:18,law:-9,wealth:-9},g:['通貨膨脹','市面上的錢變多、東西卻沒變多，物價就會上漲，錢變得不值錢。']},
+{k:'joy',n:'舉辦全國慶典',fx:{joy:10,wealth:-10},g:['國慶','國家慶祝成立的重大節日，人民一起歡慶，但活動需要花錢。']},
+{k:'joy',n:'週休二日',fx:{joy:12,dev:-6,wealth:-6},g:['週休二日','一星期工作五天、休息兩天的制度，人民有更多時間陪家人與休閒，但生產時間減少。']},
+{k:'joy',n:'實施全民健保',fx:{joy:14,wealth:-14},g:['全民健保','所有人民每月繳保費，生病時由大家共同分擔醫療費用，讓人人都看得起病。']},
+{k:'nature',n:'國家公園',fx:{nature:8,intl:4,edu:4,wealth:-8,law:-8},g:['國家公園','政府劃設保護自然與生態的區域，讓人民認識、欣賞大自然。']},
+{k:'nature',n:'禁止濫伐',fx:{nature:12,dev:-8,wealth:-4},g:['濫伐','不顧環境、隨意砍伐森林，容易造成土石流與動物失去家園。']},
+{k:'nature',n:'垃圾分類回收',fx:{nature:10,joy:-6,wealth:-4},g:['資源回收','把垃圾分類後再利用，減少垃圾量與資源浪費，但人民需要配合、有些麻煩。']},
+{k:'nature',n:'汰換老舊汽機車',fx:{nature:10,wealth:-6,joy:-4},g:['空氣污染','廢氣讓空氣變髒，傷害人體健康與環境；汰換舊車可以減少排放，但需要補助與花費。']},
+{k:'intl',n:'開放移民',fx:{intl:15,dev:5,joy:-20},g:['移民','從原本的國家搬到另一個國家長期居住。人口增加帶來勞力，但生活習慣的差異也可能產生摩擦。']},
+{k:'intl',n:'舉辦國際賽事',fx:{intl:12,wealth:-12},g:['國際賽事','各國選手一起參加的比賽，例如世界運動會，能提升知名度，但需要興建場館與花費。']},
+{k:'intl',n:'簽署國際公約',fx:{intl:10,dev:-10},g:['國際公約','許多國家共同簽下、需要一起遵守的約定，簽署後必須配合規定，開發時會受到限制。']},
+{k:'intl',n:'國際人道援助',fx:{intl:12,wealth:-12},g:['人道援助','在他國遇到戰爭或災害時，提供糧食、藥品與金錢協助。']}
+];
+let openP='';
+function togP(k){const was=openP;openP=openP==k?'':k;if(was)PO.forEach(p=>{if(p.k==was)delete ulNew[p.n]});drawPol()}
+/* ---------- 🔒 國家政策解鎖條件（v1.4）----------
+ f：做過其中任一個一般事件選擇（記號）即解鎖；e：遊戲進程達到第 e 個一般事件（0=農業…12=地球村）即解鎖。 */
+const UL={
+'開墾山坡地':{f:['irrigation'],t:'選擇【興修水利】後（有水源才能開墾山坡梯田）'},
+'興辦國營事業':{e:1,t:'進入「民生工業時期」後（政府開始經營基礎產業）'},
+'外國貸款':{e:2,t:'進入「加工出口時期」後（與國際金融往來頻繁，才借得到錢）'},
+'刪除教育預算':{e:5,t:'完成「九年國教時期」後（教育預算變成龐大的支出）'},
+'增加課業時數':{f:['compulsory','uni'],t:'選擇【實施義務教育】或【創辦大學】後（升學競爭才會出現）'},
+'派遣留學生':{f:['uni'],e:9,t:'選擇【創辦大學】，或進入「民主化時期」後（有人才與開放的環境才能出國深造）'},
+'總統直選':{f:['constitution'],t:'選擇【制定憲法】後（憲法明訂，才能舉行直選）'},
+'開放新聞自由':{f:['martial'],t:'選擇【解除戒嚴】後（報禁解除，媒體才能自由報導）'},
+'週休二日':{f:['labor'],t:'選擇【訂立勞工保護法】後（勞工權益獲得保障，才能推動週休二日）'},
+'實施全民健保':{f:['clinic'],e:10,t:'選擇【設立衛生所】，或進入「科技產業時期」後（有基層醫療網，才能辦健保）'},
+'垃圾分類回收':{f:['epa','envlaw'],t:'選擇【設立環保局】或【制定環境保護法】後（有專責單位與法律，才能推動分類）'},
+'汰換老舊汽機車':{f:['carbon'],e:10,t:'選擇【徵收碳稅】，或進入「科技產業時期」後（新型低污染車輛才夠普及）'},
+'開放移民':{e:11,t:'進入「多元文化時期」後（社會願意接納不同文化的新居民）'},
+'舉辦國際賽事':{f:['airport','port'],t:'選擇【興建機場】或【擴建國際港口】後（有國際門戶，才能接待外國選手）'}
+};
+let ulSeen={},ulNew={};
+const unlocked=p=>{const u=UL[p.n];return !u||(u.f||[]).some(f=>flags[f])||(u.e!=null&&idx>=u.e)};
+function checkUL(){
+ const ns=PO.filter(p=>UL[p.n]&&!ulSeen[p.n]&&unlocked(p));
+ ns.forEach(p=>{ulSeen[p.n]=1;ulNew[p.n]=1});
+ return ns.map(p=>`<div class="res" style="border-left-color:var(--ac)">🔓 <b>解鎖國家政策：【${p.n}】</b><div class="mu">${UL[p.n].t}，已經達成。</div></div>`).join('');
+}
+// 第1次：強化×1.3、代價不變；第2次：強化×0.7、代價不變；第3次起不能再用
+const peff=p=>{const n=pol[p.n]||0;if(n>=2)return null;const f=n?0.7:1.3,o={};for(const k in p.fx)o[k]=p.fx[k]>0?Math.round(p.fx[k]*f):p.fx[k];return o};
+function drawPol(){
+ mood();
+ const off=mode=='end'||mode=='';
+ $('pols').innerHTML=S.map(s=>{
+  const k=s[0],on=openP==k;
+  const kids=on?'<div class="pc">'+PO.map((p,i)=>[p,i]).filter(([p])=>p.k==k).map(([p,i])=>{
+   const fx=peff(p),used=pol[p.n]||0,ulk=unlocked(p),dis=off||!fx||!ulk;
+   const eff=!ulk?'🔒 解鎖條件：'+UL[p.n].t:fx?Object.keys(fx).map(x=>`<span class="${fx[x]>0?'up':'dn'}">${N[x]}${fx[x]>0?'+':''}${fx[x]}</span>`).join('　'):'已用完（每個政策最多 2 次）';
+   return `<button class="po ${dis?'lk':''}" ${dis?'disabled':''} onclick="policy(${i})"><b>${ulk?'':'🔒 '}${p.n}</b> ${ulNew[p.n]?'<span class="lkt">🆕 新解鎖</span>':''}<span class="mu">${ulk&&fx?'（第'+(used+1)+'次／共2次）':''}</span><div class="cd">${eff}</div></button>`}).join('')+'</div>':'';
+  return `<button class="pp ${on?'on':''}" onclick="togP('${k}')"><span>${s[2]} 強化${s[1]}${PO.some(p=>p.k==k&&ulNew[p.n])?' 🆕':''}</span><span>${on?'▲':'▼'}</span></button>${kids}`}).join('');
+}
+function policy(i){
+ if(mode!='choose'&&mode!='result')return;
+ const p=PO[i],d={},fx=peff(p);
+ if(!unlocked(p)){$('pmsg').innerHTML=`<b>【${p.n}】尚未解鎖</b><div>${UL[p.n].t}</div>`;return}
+ if(!fx){$('pmsg').innerHTML=`<b>【${p.n}】已用完</b><div>每個政策最多只能使用 2 次。</div>`;return}
+ // 強化總和 = 代價總和；代價參數不夠扣時，強化效果按比例縮小
+ let cost=0,paid=0;
+ for(const k in fx)if(fx[k]<0){cost-=fx[k];paid+=Math.min(-fx[k],st[k]-1)}
+ const r=cost?paid/cost:1;
+ if(r<=0){$('pmsg').innerHTML=`<b>【${p.n}】無法執行</b><div>代價的參數已經沒有可以扣的了。</div>`;return}
+ for(const k in fx){const b=st[k],v=fx[k]<0?-Math.min(-fx[k],b-1):Math.round(fx[k]*r);st[k]=Math.max(1,Math.min(100,b+v));d[k]=st[k]-b}
+ pol[p.n]=(pol[p.n]||0)+1;addBuild(p.n);
+ drawStats(d);
+ $('pmsg').innerHTML=`<b>已執行【${p.n}】（第${pol[p.n]}次）</b><div class="mu">${pol[p.n]==1?'再次使用時，代價會大於強化。':'這個政策已經用完了。'}</div>${r<1?'<div>代價的參數不夠扣，所以強化效果也按比例減少。</div>':''}<div>📖 【${p.g[0]}】${p.g[1]}</div>`;
+ if(mode=='choose')showEv();else drawPol();
+}
+
+/* ---------- 臺灣經濟發展時期（重新排序與新增事件）---------- */
+const fo=(ev,n)=>ev.opts.find(o=>o.n==n);
+const addL=(ev,n,...ls)=>{const o=fo(ev,n);o.l=(o.l||[]).concat(ls)};
+const PORT=fo(EV0[6],'擴建國際港口'),HSR=fo(EV0[6],'興建高速鐵路');
+EV0[6].opts=EV0[6].opts.filter(o=>o!==PORT);
+HSR.n='鐵路電氣化';HSR.res='鐵路架起電線，火車改用電力行駛，速度更快、污染更少，南北交通更順暢。';HSR.fx={wealth:-6,dev:8,joy:6,nature:-1};
+EV0[6].opts.splice(2,0,{n:'興建機場',req:[['wealth','>',25]],fx:{intl:8,wealth:-8,dev:6,nature:-4},flag:'airport',res:'國際機場啟用了，外國的旅客與貨物從這裡進出，台灣與世界的距離拉近了。'});
+EV0[0].era='農業時期';EV0[2].era='都市化時期';EV0[4].era='九年國教時期';
+EV0[6].era='十大建設・交通';EV0[6].title='十大建設：連接全台的交通';EV0[6].txt='政府推動大型基礎建設，要讓貨物與人流動得更快，帶動經濟成長。你要優先建設什麼呢？';
+EV0[3].era='十大建設・能源';EV0[3].title='十大建設：點亮全國的電';EV0[3].txt='工廠越來越多、家庭用電暴增，電力開始不夠用。你要用什麼方式發電呢？';
+EV0[7].era='環保覺醒時期';EV0[7].txt='工廠的煙塵與廢水讓河川和空氣越來越髒，人民開始走上街頭，要求政府保護環境。';
+EV0[5].era='民主化時期';EV0[5].title='解除戒嚴與民主改革';EV0[5].txt='人民要求更多自由與公平的制度，國家要邁向真正的民主。';
+EV0[5].opts.unshift({n:'解除戒嚴',req:[['edu','>',20]],fx:{law:18,joy:8,intl:6,wealth:-4},flag:'martial',res:'長達三十八年的戒嚴結束了，人民可以組黨、辦報、自由集會，社會充滿活力。'});
+EV0[8].era='科技產業時期';EV0[8].title='科學園區與科技島';EV0[8].txt='電腦與網路讓世界連成一片，高科技產業正在崛起，國家要往哪裡投資？';
+EV0[9].era='地球村時期';
+addL(EV0[7],'制定環境保護法',['petro',{wealth:-8,joy:-3},'石化業者強烈反對，管制成本很高，但污染必須處理。'],['heavy',{wealth:-4},'鋼鐵廠必須加裝昂貴的防污設備，業者叫苦連天。']);
+addL(EV0[7],'徵收碳稅',['heavy',{wealth:-6,joy:-3},'鋼鐵與石化是耗能大戶，成本大增，工廠抱怨連連。'],['petro',{wealth:-6},'石化產業排碳最多，稅負特別重。']);
+addL(EV0[8],'設立科學園區',['electronics',{wealth:6},'早年的電子代工累積了技術與人才，園區發展更順利。'],['epz',{wealth:4},'加工出口區累積的外銷經驗，讓園區產品更容易賣到國外。']);
+addL(EV0[9],'承諾大幅減碳',['petro',{wealth:-6,intl:-4},'石化產業排碳多，減碳承諾難以兌現，被國際批評。']);
+
+const MS={era:'民生工業時期',title:'進口替代：自己做自己用',txt:'戰後物資缺乏，政府希望人民的日用品「自己生產、少向國外買」，並保護剛起步的工廠。要怎麼推動輕工業呢？',opts:[
+ fo(EV0[1],'興建紡織工廠'),fo(EV0[1],'開採煤礦'),fo(EV0[1],'興建鐵路'),
+ {n:'關稅保護',req:[['law','>',15]],fx:{wealth:10,intl:-6,joy:2},flag:'tariff',res:'進口商品被課了很高的關稅，國內工廠生意變好，但外國商品變貴，其他國家也不太高興。'},
+ {n:'接受外國援助',req:[['intl','>',25]],fx:{wealth:12,dev:8,intl:-4,law:-3},flag:'aid',res:'外國送來物資與資金幫助國家重建，順利度過難關，但也得接受對方的許多建議。'},
+ fo(EV0[1],'維持農業社會')]};
+const EX={era:'加工出口時期',title:'設立加工出口區',txt:'人民勤奮、勞力便宜。政府想吸引工廠進駐，把原料加工後賣到世界各地，要怎麼做呢？',opts:[
+ {n:'設立加工出口區',req:[['dev','>',20]],fx:{wealth:18,dev:6,nature:-8,intl:5,joy:-2},flag:'epz,factory',res:'港口旁設立了加工出口區，工廠一間間蓋起來，訂單從世界各地飛來，家家戶戶都有工作。'},
+ {n:'發展電子代工',req:[['edu','>',20],['dev','>',25]],fx:{wealth:16,edu:3,nature:-5,intl:3,dev:-4},flag:'electronics',res:'工人們在工廠裡組裝收音機和電視，產品銷往全世界，「Made in Taiwan」愈來愈有名。'},
+ {n:'鼓勵外商投資',req:[['intl','>',25]],fx:{wealth:14,intl:-3,law:-4},flag:'fdi',res:'外國公司來台設廠，帶來資金與技術，但賺到的錢也有一部分被帶回他們的國家。'},
+ PORT,
+ {n:'保護內銷市場',req:[],fx:{wealth:-4,intl:-4,joy:1},flag:'inward',res:'你堅持保護國內市場，外銷的機會漸漸被其他國家搶走。'}]};
+const HV={era:'重化工業時期',title:'蓋大煉鋼廠與石化廠',txt:'輕工業的產品要出口，需要鋼鐵、塑膠等原料。政府想建立自己的上游工業，但這類工廠投資大、污染也重。',opts:[
+ {n:'興建大煉鋼廠',req:[['dev','>',30],['wealth','>',20]],fx:{dev:18,wealth:-6,nature:-12},flag:'heavy',res:'高爐日夜燃燒，鋼鐵供應機械與造船使用，卻也排出大量煙塵。'},
+ {n:'發展石油化學工業',req:[['dev','>',35],['wealth','>',25]],fx:{wealth:22,nature:-18,joy:-4},flag:'petro',res:'塑膠與人造纖維的原料不再依賴進口，經濟大幅成長，但河川與空氣的污染也更嚴重了。'},
+ {n:'興建造船廠',req:[['dev','>',30]],fx:{dev:8,wealth:10,intl:4,nature:-6},flag:'shipyard',res:'巨大的貨輪從船塢下水，航運與出口都更方便。'},
+ {n:'升級輕工業技術',req:[['edu','>',25]],fx:{wealth:10,edu:4,dev:-2,nature:-2},flag:'upgrade',res:'你選擇把紡織與機械做得更精緻，污染較小，賺得也比較慢但很穩。'},
+ {n:'不蓋重工業',req:[],fx:{nature:3,wealth:-6,dev:-3,intl:-2},flag:'light',res:'你守住了環境，但原料仍然要向國外購買，成本比較高。'}]};
+const MC={era:'多元文化時期',title:'多元文化的新時代',txt:'台灣社會有原住民、閩南人、客家人、外省人和新住民，大家的語言與文化都不同。政府要怎麼讓大家共同生活？',opts:[
+ {n:'推動母語教育',req:[['edu','>',20]],fx:{edu:6,joy:8,wealth:-6},flag:'mothertongue',res:'學校開始教閩南語、客語與原住民族語，孩子們能認識自己的根。'},
+ {n:'推動新住民政策',req:[['law','>',20]],fx:{joy:6,intl:6,law:5,wealth:-4},flag:'newres',res:'政府提供語言課程與就業協助，新住民成為台灣社會的重要一份子。'},
+ {n:'尊重原住民族自治',req:[['law','>',25]],fx:{joy:6,law:8,intl:5,nature:3,wealth:-8},flag:'indig',res:'原住民族有更多機會參與決定自己土地上的事，傳統文化與山林都獲得保護。'},
+ {n:'打造無障礙友善環境',req:[['wealth','>',20]],fx:{joy:10,law:4,wealth:-8},flag:'barrier',res:'街道多了坡道與電梯，輪椅、娃娃車與長輩都能方便出門。'},
+ {n:'忽視少數群體',req:[],fx:{joy:-8,law:-8,intl:-6},flag:'ignoreMin',res:'少數群體覺得被忽視，社會裡產生了隔閡與不信任。'}]};
+const EV=[EV0[0],MS,EX,EV0[2],EV0[4],EV0[6],EV0[3],HV,EV0[7],EV0[5],EV0[8],MC,EV0[9]];
+
+// v1.4：增加與生產、投資、貿易相關的財富連鎖獎勵
+const L2=(name,...ls)=>{for(const ev of [...EV,...SP]){const o=ev.opts.find(o=>o.n==name);if(o){o.l=(o.l||[]).concat(ls);return}}throw name};
+L2('興建紡織工廠',['fertilizer',{wealth:5},'農業大豐收，糧食與原料供應充足，工人吃得飽，生產更穩定。'],['irrigation',{wealth:4},'水圳讓農村穩定供應原料與勞力，紡織業順利運轉。']);
+L2('設立加工出口區',['railway',{wealth:6},'鐵路把原料與成品運到港口，出口更順暢。'],['fertilizer',{wealth:5},'農業生產力提高，釋放出大量勞力到工廠工作。']);
+L2('發展電子代工',['agschool',{wealth:5},'農業學校畢業的年輕人手腳靈巧、學得快，成為優秀的工廠勞動力。']);
+L2('興建火力發電廠',['factory',{wealth:5},'工廠用電量大，電費收入與生產力都提高了。']);
+L2('興建水力發電廠',['factory',{wealth:5},'便宜穩定的電力讓工廠降低成本，產量增加。']);
+L2('興建核能電廠',['factory',{wealth:5},'充足的電力讓工廠全力運轉，產值大幅增加。']);
+L2('實施義務教育',['factory',{wealth:5},'受過教育的工人讓工廠生產更有效率。']);
+L2('制定憲法',['fdi',{wealth:6},'政治穩定、法律明確，讓外國企業更放心投資。']);
+L2('設立獨立法院',['fdi',{wealth:5},'公平的司法保障外資的財產，企業願意投資更多。']);
+L2('興建高速公路',['epz',{wealth:6},'加工出口區的貨物能快速送到港口，出口大幅成長。'],['factory',{wealth:4},'工廠的原料與成品運輸更快更便宜。']);
+L2('興建機場',['electronics',{wealth:6},'電子零組件可用空運快速出口，利潤更高。']);
+L2('興建大煉鋼廠',['epz',{wealth:6},'鋼材供應加工出口區，降低進口原料成本。'],['factory',{wealth:4},'鋼材供應各地工廠，原料不再依賴進口。']);
+L2('發展石油化學工業',['factory',{wealth:5},'塑膠等原料供應下游工廠，產業鏈更完整。']);
+L2('興建造船廠',['port',{wealth:6},'船廠與港口互相配合，航運與出口蓬勃發展。']);
+
+Object.assign(GL,{
+'鐵路電氣化':[['電氣化鐵路','用電力驅動火車，不用燒煤，比較乾淨、速度也更快。'],['北迴鐵路','連接蘇澳與花蓮、讓東部與西部鐵路相通的路線，是十大建設之一。']],
+'興建機場':[['國際機場','提供國際航班起降的機場，是一個國家對外往來的重要大門。'],['十大建設','1970年代台灣推動的十項大型基礎建設，包括交通、能源與重工業。']],
+'關稅保護':[['關稅','進口商品過海關時要繳的稅，關稅越高，外國商品越貴。'],['進口替代','國內自己生產原本要進口的商品，減少向外國購買。']],
+'接受外國援助':[['外援','外國提供的物資或資金，幫助國家重建與發展。'],['重建','戰爭或災難後，把被破壞的地方修復起來。']],
+'設立加工出口區':[['加工出口區','提供土地與稅金優惠，讓工廠進口原料、加工後再出口的特別區域。'],['外銷','把國內生產的商品賣到國外。']],
+'發展電子代工':[['代工','接受別的公司訂單，依照對方的設計來製造產品。'],['勞力密集','需要很多工人才能完成的產業。']],
+'鼓勵外商投資':[['外商','由外國人或外國公司在本國設立的企業。'],['技術轉移','外國企業把技術教給本國的人。']],
+'保護內銷市場':[['內銷','把商品賣給國內的消費者。'],['外銷導向','以出口賺取外匯為主的經濟發展策略。']],
+'興建大煉鋼廠':[['煉鋼','把鐵礦加熱、提煉成堅硬的鋼材，用來蓋橋、造船、做機器。'],['高爐','高大的煉鐵爐，要燃燒大量焦炭，會排出煙塵。']],
+'發展石油化學工業':[['石化工業','用石油和天然氣當原料，製造塑膠、化學纖維等產品的產業。'],['上游產業','提供原料給其他工廠使用的產業。']],
+'興建造船廠':[['造船業','製造貨輪、油輪等大型船舶的產業。'],['航運','用船隻運送人與貨物。']],
+'升級輕工業技術':[['附加價值','在原料上加入設計、技術或品牌之後增加的價值。'],['輕工業','製作衣服、食品、玩具等日常用品的工業。']],
+'不蓋重工業':[['上游與下游','上游提供原料，下游用原料製造成品；自己沒有上游，就得向外購買。'],['成本','製造或購買商品需要花的錢。']],
+'解除戒嚴':[['戒嚴','政府宣布進入特殊時期，限制人民集會、結社、言論等自由。'],['組黨自由','人民可以成立政黨、參與政治的權利。']],
+'推動母語教育':[['母語','從小跟家人學會的語言，例如閩南語、客語、原住民族語。'],['語言平等','每一種語言都值得被尊重與保存。']],
+'推動新住民政策':[['新住民','從其他國家來到台灣定居、生活的人。'],['多元文化','不同族群的語言、飲食、節日在同一個社會共存，互相尊重。']],
+'尊重原住民族自治':[['原住民族','比其他族群更早居住在這片土地上的民族。'],['傳統領域','原住民族世代生活、狩獵、耕作的土地範圍。']],
+'打造無障礙友善環境':[['無障礙','讓身心障礙者、老人、小孩都能方便使用的設施，例如坡道、電梯。'],['共融','不同的人都能一起使用、一起參與。']],
+'忽視少數群體':[['歧視','因為族群、性別、身分等原因，對人不公平。'],['社會融合','不同背景的人能互相理解、一起生活。']]
+});
+
+/* ---------- 國家危機事件：參數極低時，在下一個一般事件「之前」插入 ---------- */
+const lastCr={};
+const CR=[
+{key:'nature',cond:()=>st.nature<30,era:'🆘 國家危機',title:'生態亮紅燈！',txt:'空氣污濁、河川發臭，動植物大量消失。科學家與人民都在呼籲：再不處理，國家就沒有未來了！你必須動用手上的強項來搶救環境。',
+ opts:()=>RS.filter(r=>r.t=='nature').concat([{n:'硬著頭皮撐下去',req:[],fx:{nature:-6,joy:-6,intl:-4},res:'你選擇暫時不處理，環境繼續惡化，人民與國際社會都很失望。'}])},
+{key:'wealth',cond:()=>st.wealth<30,era:'🆘 國家危機',title:'國庫見底！',txt:'政府的錢快用完了，公務員的薪水發不出來，建設也全部停工。你必須想辦法籌錢，但每個辦法都有代價。',
+ opts:()=>RS.filter(r=>r.t=='wealth').concat([{n:'縮衣節食度日',req:[],fx:{wealth:-3,joy:-8,dev:-4},res:'政府勒緊褲帶過日子，什麼建設都停下來，人民也過得很辛苦。'}])}
+];
+
+/* ---------- 🗺️ 你美麗的國家：動態地圖 ---------- */
+// 10 種底板（島嶼、半島、靠海陸地），每局隨機抽一種；地圖座標 400×260
+const MAPS=[
+{n:'一座島嶼',d:'M70 140C60 90 120 50 190 55C260 45 340 80 345 130C350 185 290 215 220 212C150 225 80 200 70 140Z'},
+{n:'一座島嶼',d:'M40 170C50 120 120 100 170 80C230 55 320 40 360 70C380 100 330 140 280 160C220 190 150 225 90 215C55 208 35 190 40 170Z'},
+{n:'一座島嶼',d:'M110 110C130 60 200 40 260 60C320 70 350 120 330 170C310 220 230 235 170 220C110 210 85 160 110 110Z'},
+{n:'一座島嶼（附離島）',d:'M60 120C70 70 150 55 210 75C260 90 290 140 260 180C230 215 150 215 100 190C70 170 55 145 60 120Z M300 70C320 55 360 65 360 90C358 112 325 118 308 105C295 95 293 78 300 70Z'},
+{n:'半島',d:'M120 0L290 0C300 60 280 90 290 130C300 170 270 215 235 235C205 250 185 225 190 190C195 150 140 130 130 90C125 60 125 30 120 0Z'},
+{n:'半島',d:'M0 70C60 55 120 65 180 80C240 95 300 100 350 130C375 150 340 175 290 170C230 165 190 190 130 195C80 200 40 200 0 190Z'},
+{n:'半島',d:'M110 260C105 200 140 170 160 130C175 95 165 60 195 35C225 15 250 45 245 85C240 120 270 150 295 185C310 215 300 245 295 260Z'},
+{n:'靠海的陸地',d:'M0 120C60 100 100 140 170 125C240 110 290 90 340 110C370 120 390 115 400 105L400 260L0 260Z'},
+{n:'靠海的陸地',d:'M400 0L240 0C220 50 270 80 250 120C230 160 280 190 255 230C245 245 250 255 255 260L400 260Z'},
+{n:'靠海的陸地',d:'M0 0L400 0L400 100C360 90 330 130 290 125C250 120 240 80 200 85C150 90 140 150 100 150C60 150 40 110 0 120Z'}
+];
+const tr=(x,h=9)=>`<rect x="${x-.9}" y="-3" width="1.8" height="4" fill="#8a5a36"/><circle cx="${x}" cy="${-3-h*.45}" r="${3.4+h*.2}" fill="#3fa468"/><circle cx="${x-2}" cy="${-1-h*.3}" r="${2.4+h*.1}" fill="#5cc07f"/>`;
+const bd=(x,w,h,c)=>`<rect x="${x}" y="${-h}" width="${w}" height="${h}" rx="1.6" fill="${c}"/>`;
+const ch=(x,h)=>`<rect x="${x}" y="${-h}" width="3" height="${h}" fill="#555"/><circle cx="${x+1.5}" cy="${-h-3}" r="3" fill="#ddd" opacity=".85"/>`;
+const wn=(x,y,n)=>Array.from({length:n},(_,i)=>`<rect x="${x+i*4}" y="${y}" width="2" height="2" fill="#fff8c0"/>`).join('');
+const I={
+canal:'<path d="M-13 4Q-5 -6 3 2T13 -4" stroke="#4a90c2" stroke-width="3.5" fill="none"/>',
+farm:'<rect x="-12" y="-8" width="24" height="15" fill="#c9b24a"/><path d="M-12 -4H12M-12 0H12M-12 4H12" stroke="#7aa13a" stroke-width="1.6"/>',
+chem:bd(-10,14,10,'#9a8fbf')+ch(6,18)+'<circle cx="-3" cy="-13" r="3" fill="#c7bfe0"/>',
+school:'<path d="M-11 -10L0 -17L11 -10Z" fill="#b5533c"/>'+bd(-10,20,10,'#e6c27a')+'<rect x="-2" y="-6" width="4" height="6" fill="#6b4a2f"/><path d="M0 -17V-23L6 -21L0 -19" fill="#c0452f"/>',
+univ:bd(-12,24,9,'#d8cfae')+'<path d="M-6 -9A6 6 0 0 1 6 -9Z" fill="#7aa0c4"/><path d="M-9 -9V0M-4 -9V0M4 -9V0M9 -9V0" stroke="#aaa" stroke-width=".8"/>',
+tech:bd(-10,20,9,'#a8b5c4')+ch(5,16)+wn(-8,-6,4),
+factory:bd(-11,22,10,'#8c8c96')+'<path d="M-11 -10l5 -5v5l5 -5v5l5 -5v5l5 -5v5Z" fill="#6f6f7a"/>'+ch(7,20),
+fab:bd(-11,22,9,'#8fb4d9')+wn(-9,-7,5)+wn(-9,-3,5),
+mine:'<path d="M-13 0L-3 -14L2 -8L8 -16L14 0Z" fill="#7b6a5a"/><path d="M-3 0V-5Q0 -8 3 -5V0Z" fill="#222"/>',
+rail:'<path d="M-14 3H14M-14 -3H14" stroke="#555" stroke-width="1.5"/><path d="M-11 -5V5M-5 -5V5M1 -5V5M7 -5V5" stroke="#8a6a4a" stroke-width="1.6"/>',
+erail:'<path d="M-14 4H14" stroke="#555" stroke-width="1.5"/><path d="M-14 -10H14" stroke="#222" stroke-width=".9"/><path d="M-9 -10V4M0 -10V4M9 -10V4" stroke="#777"/><rect x="-6" y="-6" width="12" height="7" rx="2" fill="#e9eef5" stroke="#4a90c2"/>',
+sewage:'<ellipse cx="-6" cy="-3" rx="7" ry="4" fill="#6fb3d6" stroke="#357"/><ellipse cx="7" cy="-3" rx="5" ry="3.5" fill="#8ec9e6" stroke="#357"/>',
+housing:bd(-13,8,12,'#d9b88f')+bd(-4,9,17,'#e3c9a0')+bd(6,7,10,'#cfa57a')+wn(-11,-9,2)+wn(-2,-14,2)+wn(-2,-9,2),
+clinic:bd(-9,18,12,'#f3f1ea')+'<path d="M-1.5 -10h3v7h-3zM-5 -7h10v3h-10z" fill="#c0452f"/>',
+thermal:bd(-12,24,8,'#777')+ch(-7,22)+ch(3,27),
+hydro:'<path d="M-13 0L-8 -14H8L13 0Z" fill="#bdbdbd" stroke="#777"/><path d="M-8 -14H8V-11H-8Z" fill="#4a90c2"/><path d="M-4 0V6M3 0V8" stroke="#4a90c2" stroke-width="2"/>',
+nuclear:'<path d="M-13 0Q-8 -10 -10 -18H-2Q-5 -10 0 0Z" fill="#dcdcdc" stroke="#888"/><path d="M0 0Q5 -10 2 -16H11Q8 -10 13 0Z" fill="#d0d0d0" stroke="#888"/><circle cx="-6" cy="-21" r="3" fill="#fff" opacity=".9"/>',
+highway:'<rect x="-15" y="-3" width="30" height="7" fill="#6d6d6d"/><path d="M-13 .5H13" stroke="#fff" stroke-width="1" stroke-dasharray="3 2"/><rect x="-6" y="-2" width="5" height="3" fill="#c0452f"/>',
+port:'<rect x="-14" y="-2" width="28" height="4" fill="#7a6a58"/><path d="M-6 -2V-17H5M5 -17V-9" stroke="#c0452f" stroke-width="2" fill="none"/><path d="M-12 4h24l-3 5h-18z" fill="#4a5a78"/><rect x="-5" y="-1" width="4" height="3" fill="#e0b84a"/>',
+airport:'<rect x="-15" y="-1" width="30" height="5" fill="#555"/><path d="M-11 1.5H11" stroke="#fff" stroke-dasharray="3 2"/><path d="M0 -14L2 -9L9 -7V-5L2 -6L1 -2L3 -1V0L0 -1L-3 0V-1L-1 -2L-2 -6L-9 -5V-7L-2 -9Z" fill="#eef" stroke="#667" stroke-width=".6"/>',
+steel:bd(-11,22,9,'#a56a52')+ch(5,20)+'<circle cx="-5" cy="-5" r="2.2" fill="#f2a04a"/>',
+petro:'<rect x="-13" y="-9" width="9" height="9" rx="3" fill="#cfd6df" stroke="#778"/><rect x="-2" y="-12" width="9" height="12" rx="3" fill="#dfe4ea" stroke="#778"/><path d="M11 0V-16" stroke="#555" stroke-width="2"/><path d="M11 -16Q8 -20 11 -24Q14 -20 11 -16Z" fill="#f2a04a"/>',
+shipyard:'<path d="M-13 3h26l-4 6h-18z" fill="#4a5a78"/><path d="M-6 3V-6H5V3" fill="#c0452f"/><path d="M-11 -12V3M-11 -12H-2" stroke="#444" stroke-width="2" fill="none"/>',
+renew:'<path d="M-2 0V-18" stroke="#eee" stroke-width="2"/><path d="M-2 -18l-7 -3M-2 -18l6 -4M-2 -18l1 7" stroke="#fff" stroke-width="1.6"/><path d="M3 0L6 -6H13L10 0Z" fill="#2c4f86" stroke="#9bd" stroke-width=".6"/>',
+trees:tr(-8)+tr(0,12)+tr(8,9),
+sci:bd(-12,8,18,'#7fb2d9')+bd(-3,8,24,'#6aa5d1')+bd(6,6,14,'#8fc0e2')+wn(-10,-14,2)+wn(-1,-20,2)+wn(-1,-12,2),
+smart:bd(-10,8,16,'#9ec9a8')+bd(0,9,22,'#7fbf93')+'<path d="M-3 -26Q2 -31 7 -26M-6 -29Q2 -36 10 -29" fill="none" stroke="#2f7d5b" stroke-width="1.3"/>'+wn(2,-18,2)+wn(2,-12,2),
+gov:'<path d="M-12 -9L0 -16L12 -9Z" fill="#d8d0b8"/><rect x="-10" y="-9" width="20" height="9" fill="#efe9d6"/><path d="M-7 -9V0M-2 -9V0M3 -9V0M8 -9V0" stroke="#999"/><path d="M0 -16V-22L5 -20L0 -18" fill="#c0452f"/>',
+filter:bd(-10,18,9,'#8c8c96')+'<rect x="4" y="-16" width="3" height="16" fill="#555"/><circle cx="5.5" cy="-19" r="3" fill="#7bd49a"/>',
+pylon:'<path d="M-6 0L0 -22L6 0M-4 -8H4M-3 -14H3" stroke="#555" stroke-width="1.5" fill="none"/>',
+terrace:'<path d="M-14 0H14L10 -5H-10ZM-10 -5H10L6 -10H-6Z" fill="#a8c46a" stroke="#6d8a3a"/>',
+worksite:'<path d="M-11 0H11" stroke="#555" stroke-width="1.5"/><path d="M-6 0V-15H4L10 -9" stroke="#e0b84a" stroke-width="2" fill="none"/><circle cx="-9" cy="-3" r="2" fill="#c0452f"/>',
+park:tr(-7,11)+tr(2,8)+'<path d="M-12 3H12" stroke="#8a6a4a" stroke-width="1.5"/><rect x="6" y="-7" width="6" height="4" fill="#8a6a4a"/>',
+recycle:'<rect x="-6" y="-11" width="12" height="11" rx="2" fill="#4a9d6b"/><path d="M-3 -6l3 -3 3 3" stroke="#fff" fill="none" stroke-width="1.4"/>',
+stadium:'<ellipse cx="0" cy="-4" rx="14" ry="8" fill="#d8d8d8" stroke="#888"/><ellipse cx="0" cy="-4" rx="9" ry="4.5" fill="#4a9d6b"/>',
+wetland:'<ellipse cx="0" cy="-2" rx="13" ry="5" fill="#6fb3d6"/><path d="M-6 -3V-10M-2 -3V-12M3 -3V-9" stroke="#5a8a3a" stroke-width="1.6"/>',
+tour:bd(-9,18,13,'#e8a9a0')+wn(-7,-10,4)+wn(-7,-5,4)+'<path d="M5 -13Q10 -19 15 -13Z" fill="#e0b84a"/>'
+};
+// 選項／政策名稱 → [圖案, 建設區域：coast 海岸、mount 山區、flat 平地]
+const ICO={
+'興修水利':['canal','flat'],'土地改革':['farm','flat'],'生產化肥':['chem','flat'],'農業學校':['school','flat'],
+'興建紡織工廠':['factory','flat'],'開採煤礦':['mine','mount'],'興建鐵路':['rail','flat'],
+'設立加工出口區':['factory','coast'],'發展電子代工':['fab','flat'],'擴建國際港口':['port','coast'],
+'興建污水處理廠':['sewage','flat'],'興建公共住宅':['housing','flat'],'設立衛生所':['clinic','flat'],
+'實施義務教育':['school','flat'],'創辦大學':['univ','flat'],'設立職業學校':['tech','flat'],
+'興建高速公路':['highway','flat'],'鐵路電氣化':['erail','flat'],'興建機場':['airport','flat'],
+'興建火力發電廠':['thermal','coast'],'興建水力發電廠':['hydro','mount'],'興建核能電廠':['nuclear','coast'],'向鄰國買電':['pylon','flat'],
+'興建大煉鋼廠':['steel','coast'],'發展石油化學工業':['petro','coast'],'興建造船廠':['shipyard','coast'],
+'發展再生能源':['renew','flat'],'發起植樹造林':['trees','mount'],
+'設立科學園區':['sci','flat'],'打造智慧城市':['smart','flat'],'成立數位政府':['gov','flat'],'設立獨立法院':['gov','flat'],
+'設立環保局':['gov','flat'],'要求工廠加裝過濾設備':['filter','flat'],
+'封山保育':['trees','mount'],'還田於河':['wetland','flat'],'退耕還林':['trees','mount'],'引進環保科技':['filter','flat'],'發展觀光':['tour','coast'],'開放資源開採':['mine','mount'],
+'強徵民工':['worksite','flat'],'開墾山坡地':['terrace','mount'],'興辦國營事業':['factory','flat'],'以工代賑':['worksite','flat'],
+'強制入學':['school','flat'],'總統直選':['gov','flat'],'成立廉政機關':['gov','flat'],'實施全民健保':['clinic','flat'],
+'國家公園':['park','mount'],'禁止濫伐':['trees','mount'],'垃圾分類回收':['recycle','flat'],'舉辦國際賽事':['stadium','flat']
+};
+let MP=null;
+const D8=[[1,0],[-1,0],[0,1],[0,-1],[.7,.7],[-.7,.7],[.7,-.7],[-.7,-.7]];
+function initMap(){
+ const M=MAPS[Math.random()*MAPS.length|0];
+ let sd=Math.random()*1e9|0;
+ const rnd=()=>{sd|=0;sd=sd+0x6D2B79F5|0;let t=Math.imul(sd^sd>>>15,1|sd);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
+ const ctx=document.createElement('canvas').getContext('2d'),p2=new Path2D(M.d);
+ const lnd=(x,y)=>(x<0||x>400||y<0||y>260)?true:ctx.isPointInPath(p2,x,y);
+ const pts=[];
+ for(let x=16;x<=384;x+=8)for(let y=16;y<=244;y+=8){
+  if(!lnd(x,y))continue;
+  let out=0,deep=1;
+  for(const [dx,dy] of D8){if(!lnd(x+dx*14,y+dy*14))out++;if(!lnd(x+dx*30,y+dy*30))deep=0}
+  pts.push({x,y,coast:out>0,inner:out==0,deep:!!deep&&out==0});
+ }
+ for(let i=pts.length-1;i>0;i--){const j=rnd()*(i+1)|0;[pts[i],pts[j]]=[pts[j],pts[i]]}
+ const big=[],dm=(p,q)=>Math.hypot(p.x-q.x,p.y-q.y),far=(p,d)=>big.every(q=>dm(p,q)>=d);
+ const pick=(f,d)=>{const p=pts.find(p=>f(p)&&far(p,d));if(p)big.push(p);return p};
+ const mt=[];for(let i=0;i<3;i++){const p=pick(p=>p.deep,55)||pick(p=>p.inner,50);if(p)mt.push(p)}
+ const vil=pick(p=>p.inner,45)||pick(p=>true,25),city=pick(p=>p.inner,85)||pick(p=>true,45),cst=pick(p=>p.coast,35);
+ let h='<rect class="sea" width="400" height="260"/>';
+ for(let i=0;i<28;i++){const x=(rnd()*380|0)+8,y=(rnd()*240|0)+10;h+=`<path d="M${x} ${y}q3 -3 6 0t6 0" stroke="#fff" stroke-width="1.2" fill="none" opacity=".75" stroke-linecap="round"/>`}
+ h+=`<path d="${M.d}" fill="none" stroke="#f6e7b4" stroke-width="13" stroke-linejoin="round"/><path id="land" d="${M.d}" fill="#7cc47f" stroke="#3a3a3a" stroke-width="2.2" stroke-linejoin="round"/>`;
+ // 森林
+ const tl=[];h+='<g class="o">';
+ for(const p of pts){if(tl.length>=16)break;if(!p.coast&&far(p,24)&&tl.every(q=>dm(p,q)>=20)){tl.push(p);h+=`<g transform="translate(${p.x},${p.y})">${tr(0,8+(rnd()*5|0))}</g>`}}
+ // 山
+ mt.forEach(p=>{h+=`<g transform="translate(${p.x},${p.y}) scale(1.3)"><path d="M-18 0Q-16 -6 -7 -19Q-3 -25 1 -19Q8 -9 10 -12Q14 -18 17 -12Q22 -4 24 0Z" fill="#a3aec2"/><path d="M-7 -19Q-3 -25 1 -19L3 -15L0 -17L-3 -14L-5 -16Z" fill="#fff"/></g>`});
+ h+='</g>';
+ // 道路
+ let road='',road2='';
+ const rd=(d,w)=>`<path d="${d}" stroke="#4a4a4a" stroke-width="${w+2}" fill="none" stroke-linecap="round"/><path d="${d}" stroke="#dccaa0" stroke-width="${w}" fill="none" stroke-linecap="round"/><path d="${d}" stroke="#fff" stroke-width=".9" stroke-dasharray="3 3" fill="none"/>`;
+ if(vil&&city){const mx=(vil.x+city.x)/2+(rnd()-.5)*50,my=(vil.y+city.y)/2+(rnd()-.5)*50;road=`M${vil.x} ${vil.y}Q${mx} ${my} ${city.x} ${city.y}`;h+=rd(road,4.5)}
+ if(city&&cst){road2=`M${city.x} ${city.y}L${cst.x} ${cst.y}`;h+=rd(road2,3.8)}
+ // 村落與城市
+ const hs=(x,y,c)=>`<rect x="${x-4.5}" y="${y-5}" width="9" height="5.5" rx="1" fill="#fff1d0"/><path d="M${x-6} ${y-4.5}L${x} ${y-11}L${x+6} ${y-4.5}Z" fill="${c}"/><rect x="${x-1}" y="${y-3}" width="2.2" height="3.5" fill="#8a5a36"/>`;
+ if(vil)h+=`<g class="o" transform="translate(${vil.x},${vil.y})">${hs(-9,0,'#e0564a')+hs(6,3,'#4a90c2')+hs(-1,-7,'#e0b84a')}</g>`;
+ if(city)h+=`<g class="o" transform="translate(${city.x},${city.y})">${bd(-15,8,13,'#f2a6a0')+bd(-6,9,22,'#9ecbe8')+bd(4,8,16,'#f7d58a')+bd(11,6,10,'#b7e0b0')+wn(-13,-10,2)+wn(-4,-18,2)+wn(-4,-11,2)+wn(-4,-4,2)+wn(6,-12,1)}</g>`;
+ h+='<g id="ic"></g>';
+ // 人流（小人）
+ const cols=['#e0564a','#4a90c2','#e0b84a','#6aa84f','#9b6bc4'];
+ const pe=(path,i,rev)=>`<g><circle r="1.8" cy="-4.4" fill="#ffd9b0" stroke="#333" stroke-width=".5"/><rect x="-1.6" y="-3" width="3.2" height="3.8" rx="1.3" fill="${cols[i%5]}" stroke="#333" stroke-width=".5"/><animateMotion dur="${10+i*2}s" begin="-${i*2.5}s" repeatCount="indefinite" path="${path}"${rev?' keyPoints="1;0" keyTimes="0;1" calcMode="linear"':''}/></g>`;
+ if(road)for(let i=0;i<5;i++)h+=pe(road,i,i%2);
+ if(road2)for(let i=0;i<3;i++)h+=pe(road2,i+1,i%2);
+ // 太陽與雲
+ h+='<circle cx="372" cy="24" r="11" fill="#ffd95a" stroke="#3a3a3a" stroke-width="1.5" pointer-events="none"/>';
+ for(let i=0;i<2;i++)h+=`<g pointer-events="none"><animateTransform attributeName="transform" type="translate" from="-70 0" to="470 0" dur="${75+i*30}s" begin="-${i*38}s" repeatCount="indefinite"/><g transform="translate(0,${18+i*20})" fill="#fff" opacity=".9"><ellipse rx="15" ry="5"/><circle cx="-5" cy="-4" r="5"/><circle cx="3" cy="-6" r="6"/></g></g>`;
+ h+='<rect id="smog" width="400" height="260" fill="#6b6b6b" opacity="0" pointer-events="none"/>';
+ $('map').innerHTML=h;
+ MP={pts,big,mt,rnd,cnt:{},n:0,name:M.n};
+ $('mtitle').textContent='🗺️ 你美麗的'+name;$('mcap').textContent='地形：'+M.n+'｜已興建 0 項建設';
+ mood();
+}
+function addBuild(name){
+ const e=ICO[name];if(!e||!MP)return;
+ const k=MP.cnt[name]||0;if(k>=3)return;
+ const {pts,big,mt}=MP,dm=(p,q)=>Math.hypot(p.x-q.x,p.y-q.y),okd=(p,d)=>big.every(q=>dm(p,q)>=d);
+ const zf={coast:p=>p.coast,mount:p=>!p.coast&&mt.some(m=>dm(p,m)<60),flat:p=>p.inner}[e[1]];
+ let c=null;
+ for(const f of [zf,()=>true]){for(const d of [30,22,14]){const L=pts.filter(p=>f(p)&&okd(p,d));if(L.length){c=L[MP.rnd()*L.length|0];break}}if(c)break}
+ if(!c)return;
+ big.push(c);MP.cnt[name]=k+1;MP.n++;
+ $('ic').insertAdjacentHTML('beforeend',`<g transform="translate(${c.x},${c.y}) scale(1.15)"><ellipse cy="1.5" rx="13" ry="3.6" fill="#000" opacity=".18"/><g class="pop o"><title>${name}</title>${I[e[0]]}</g></g>`);
+ $('mcap').textContent='地形：'+MP.name+'｜已興建 '+MP.n+' 項建設';
+}
+// 依自然環境調整地表顏色與霧霾
+function mood(){
+ if(!MP||!st||st.nature==null)return;
+ const t=Math.max(0,Math.min(1,st.nature/100)),mix=(a,b)=>Math.round(a+(b-a)*t);
+ const l=$('land'),sm=$('smog');
+ if(l)l.setAttribute('fill',`rgb(${mix(176,124)},${mix(150,196)},${mix(106,127)})`);
+ if(sm)sm.setAttribute('opacity',st.nature<45?((45-st.nature)/45*.5).toFixed(2):0);
+}
+
+/* ---------- 💥 意外事件（v1.4）----------
+ 選了某些選項後，會「埋下」一個意外事件。之後每個一般事件回合前，都會有 ACC_P 的機率爆發（每個只會爆發一次）。
+ 爆發時先扣 dmg，再提供 4 種補救選項（選之前看不到效果）。 */
+const ACC_P=0.01;
+let accPend=[],accDone={},lastAcc=-1;
+const A=(t,txt,dmg,g,...r)=>({t,txt,dmg,g,opts:r.map(([n,fx,res])=>({n,req:[],fx,res}))});
+const ACC={
+'生產化肥':A('土地鹽鹼化','長期大量使用化肥，加上灌溉水蒸發，鹽分累積在土壤表面，農田白茫茫一片，作物長不出來。',{dev:-10,wealth:-10,nature:-20},['鹽鹼化','土壤裡的鹽分過多，作物吸不到水分而枯死，土地也很難再耕種。'],
+ ['改善排水設施',{dev:-5,nature:10},'你挖了排水溝把鹽分沖走，土地慢慢恢復，但工程花了不少人力。'],
+ ['深耕換土',{nature:-5,dev:10},'農民把表層的鹽土翻到下面、換上新土，產量很快回升，但土壤結構被破壞了。'],
+ ['政府購地休耕',{wealth:-10,nature:10},'政府買下受損的農地讓它休息，土壤慢慢恢復，但花了不少錢。'],
+ ['使用化學藥劑',{wealth:-10,dev:5},'你用藥劑中和土壤，短期有效，但農田越來越依賴藥劑。']),
+'興建核能電廠':A('核子意外事故','核電廠發生冷卻系統故障，雖然機率極低，卻真的發生了！電廠緊急停擺，附近居民人心惶惶。',{dev:-20,wealth:-30,nature:-5},['核子事故','核電廠發生冷卻失效或輻射外洩的重大意外，影響範圍廣，需要很長的時間處理。'],
+ ['全面封鎖消息',{dev:-20,wealth:10,nature:-40},'你下令封鎖消息、繼續運轉，但輻射悄悄擴散，真相曝光後後果更嚴重。'],
+ ['聯繫國際團隊',{intl:-10,dev:10},'國際專家迅速到場協助，危機慢慢控制住，但你也得承認處理能力不足。'],
+ ['疏散災民',{joy:-10,nature:-10},'居民及時撤離沒有人傷亡，但家園一時無法回去，大家怨聲載道。'],
+ ['永久停機',{wealth:-10,dev:-5,nature:5},'你決定讓電廠永久停止運轉，雖然損失慘重，但危險終於解除。']),
+'開採煤礦':A('礦坑坍塌','深處的礦坑因為支撐不足突然坍塌，許多礦工被困在地下。',{dev:-8,joy:-12,wealth:-6},['礦災','礦坑內發生坍塌、氣爆等意外，容易造成工人傷亡，所以需要嚴格的礦場安全規定。'],
+ ['全力搜救',{wealth:-8,joy:6},'救難隊日夜挖掘，多數礦工平安獲救，全國都為他們鬆了一口氣。'],
+ ['關閉礦坑',{wealth:-10,nature:6,dev:-6},'你決定封閉這座危險的礦坑，損失了產量，卻保護了工人的安全。'],
+ ['隱瞞真相繼續開採',{law:-12,wealth:6,joy:-8},'你掩蓋了事故，礦場繼續運轉，但家屬的怒火與傳言越來越大。'],
+ ['加強安全規範',{law:6,dev:-4,wealth:-6},'礦場必須定期檢查、配戴安全裝備，雖然成本增加，事故減少了。']),
+'興建紡織工廠':A('工廠大火','紡織廠裡的棉絮與電線走火，廠房被燒得精光，工人驚慌逃生。',{wealth:-10,joy:-8,dev:-5},['工業安全','工廠為了保護工人，要有消防設備、逃生通道與定期檢查的規定。'],
+ ['補償受災工人',{wealth:-8,joy:6},'工人們拿到補償與醫療協助，雖然心有餘悸，但感受到政府的關心。'],
+ ['全面檢修消防設備',{wealth:-6,law:4},'所有工廠都被要求檢查消防設備，之後火災明顯減少。'],
+ ['迅速重建廠房',{wealth:-10,dev:8},'工廠很快重新開工，生產恢復，但安全問題並沒有真正改善。'],
+ ['只賠償不改善',{wealth:-2,law:-6,joy:-4},'你只簽了賠償就了事，工人對安全仍然沒有信心。']),
+'興建火力發電廠':A('嚴重空氣污染','火力電廠的廢氣讓天空整天灰濛濛，市民出現咳嗽與氣喘，抗議聲不斷。',{nature:-12,joy:-10,intl:-3},['脫硫設備','去除廢氣裡的硫，減少酸雨與空氣污染的設備。'],
+ ['加裝脫硫設備',{wealth:-10,nature:8},'煙囪排出的廢氣乾淨了許多，空氣漸漸好轉，但電廠成本增加。'],
+ ['降低發電量',{dev:-8,nature:5,wealth:-4},'電廠減少運轉，空氣稍微改善，但電力吃緊影響了生產。'],
+ ['發放口罩宣導防護',{wealth:-5,joy:3},'民眾拿到口罩，暫時安心，但污染本身還在。'],
+ ['改用天然氣發電',{wealth:-12,nature:6,dev:3},'燃料換成較乾淨的天然氣，污染降低，但燃料費用高很多。']),
+'興建水力發電廠':A('水庫淤積','上游的砂石長年沖入水庫，庫底越積越高，蓄水量下降，發電量也減少了。',{dev:-8,wealth:-8,nature:-8},['淤積','河水帶來的泥沙沉澱在水庫底部，使水庫變淺、蓄水量減少。'],
+ ['疏濬清淤',{wealth:-10,dev:6},'大型機具把泥沙挖出來，水庫恢復容量，但花費不少。'],
+ ['上游水土保持',{nature:8,wealth:-6},'上游種樹護坡，泥沙減少，水庫能用得更久。'],
+ ['興建新水庫',{wealth:-14,dev:8,nature:-6},'新水庫帶來更多水與電，但又淹沒了一片山谷。'],
+ ['限水節約',{joy:-8,dev:-2,wealth:2},'用水與用電受到限制，人民生活不便，但省下了一些開銷。']),
+'發展石油化學工業':A('石化廠氣爆','石化廠的管線突然破裂引發氣爆，濃煙直衝天際，附近居民緊急避難。',{wealth:-15,joy:-12,nature:-10},['氣爆','易燃氣體外洩遇到火源突然爆炸，威力很大，會造成人員傷亡與設備損壞。'],
+ ['全面停工檢查',{wealth:-12,law:4,nature:3},'所有石化廠暫停營運接受檢查，損失慘重，但危險管線被找出來了。'],
+ ['補償居民並遷廠',{wealth:-14,joy:6,nature:4},'工廠遷離住宅區，居民獲得補償，但搬遷花了大筆預算。'],
+ ['立即復工',{wealth:4,law:-8,joy:-8},'工廠很快恢復生產，但居民不信任，抗議越來越多。'],
+ ['引進自動監控',{wealth:-10,edu:3,dev:4},'新系統隨時監測管線，也培養了一批技術人員，但設備很昂貴。']),
+'擴建國際港口':A('油輪漏油','進港的油輪撞上礁石，原油外洩，海岸線一片漆黑，海鳥與魚類大量死亡。',{nature:-15,wealth:-8,intl:-5},['漏油','船隻的石油外洩到海面，會覆蓋羽毛與魚鰓，造成海洋生物大量死亡。'],
+ ['動員民眾清理海岸',{joy:-3,nature:8,wealth:-3},'許多志工與居民拿著工具清理海岸，海灘慢慢恢復，大家也更團結。'],
+ ['聘請國際專家',{wealth:-10,nature:10,intl:3},'專家用專業設備快速處理，污染控制住了，但費用相當高。'],
+ ['向船公司求償',{law:5,wealth:3,nature:-3},'你依法向船公司求償，拿回一部分錢，但海岸清理慢了許多。'],
+ ['噴灑分散劑',{wealth:-6,nature:2,intl:-3},'分散劑讓海面看起來乾淨了，但油汙沉到海底，仍然傷害生物。']),
+'設立加工出口區':A('訂單驟減','國際景氣突然衰退，外國客戶紛紛取消訂單，加工出口區裡的工廠一間間關門。',{wealth:-15,dev:-5},['景氣循環','經濟有時繁榮、有時衰退，像波浪一樣起起伏伏。'],
+ ['開拓新市場',{wealth:-6,intl:6},'你派人到各國拜訪客戶，找到了新的買家，但開拓過程花了不少錢。'],
+ ['轉型升級產品',{wealth:-10,edu:5},'工廠改做技術含量更高的產品，需要培訓工人，也提高了競爭力。'],
+ ['紓困貸款給工廠',{wealth:-12,joy:5},'政府貸款幫工廠撐過難關，工人保住了工作，但國庫吃緊。'],
+ ['降價搶訂單',{wealth:-4,joy:-6,dev:3},'你用低價換到一些訂單，但工人薪水被壓低，大家很不滿。']),
+'放任城市自由發展':A('傳染病流行','擁擠髒亂的環境讓傳染病迅速擴散，學校與工廠被迫停課停工。',{joy:-15,wealth:-10},['疫情','傳染病在短時間內大量傳染，影響很多人的健康和生活。'],
+ ['緊急設置隔離與醫療站',{wealth:-10,joy:4},'病人被及時隔離治療，疫情慢慢趨緩，但開銷很大。'],
+ ['全面消毒與清潔',{wealth:-6,nature:3,joy:2},'街道與水源被徹底清潔，環境乾淨了許多，疫情也降溫。'],
+ ['鼓勵民眾自行就醫',{joy:-6,wealth:-2},'你呼籲大家自己想辦法，但醫院人滿為患，疫情拖了很久。'],
+ ['封城管制',{joy:-8,law:-4,wealth:-6},'城市被封鎖，疫情確實壓下來了，但人民行動受限，怨言不少。']),
+'向鄰國買電':A('鄰國斷電','鄰國因為電力吃緊，突然減少供電，工廠與家庭一片漆黑。',{dev:-10,wealth:-8,joy:-6},['備用電源','在停電時可以立刻啟動、提供電力的發電設備。'],
+ ['緊急啟用備用發電機',{wealth:-10,nature:-4,dev:4},'備用發電機轟隆運轉，工廠勉強恢復，但燃料費驚人、噪音與廢氣也增加。'],
+ ['與鄰國重新談判',{intl:-4,wealth:-6,dev:5},'經過談判，鄰國答應恢復供電，但你付出了更高的價格。'],
+ ['實施輪流停電',{joy:-8,dev:-2},'各區輪流停電，勉強撐過去，但大家的生活與生產都被打亂。'],
+ ['加速自建電廠',{wealth:-14,dev:8,nature:-5},'你決定自己蓋電廠，從此不再受制於人，但投資金額龐大。']),
+'興建高速公路':A('重大車禍','大霧的清晨，高速公路上發生了多車連環追撞，傷亡慘重。',{joy:-10,wealth:-5},['連環車禍','很多車子因為來不及煞車而前後追撞，常見原因是大霧、超速或沒保持車距。'],
+ ['加強測速與取締',{law:4,wealth:-4,joy:-2},'警察加強測速與取締，大家開車變得守規矩，事故減少。'],
+ ['設置警示與護欄',{wealth:-8,joy:3},'路上增加了警示燈與護欄，行車更安全，但工程花了不少錢。'],
+ ['全面限速管制',{dev:-4,joy:-3},'車速被限制，事故變少了，但物流變慢、人民抱怨。'],
+ ['鼓勵搭乘大眾運輸',{wealth:-6,nature:3,joy:1},'政府補助公車與火車票價，車流減少，空氣也變好，但補助要花錢。']),
+'成立數位政府':A('個資外洩','政府網站遭駭客入侵，大量人民的個人資料外洩，詐騙案件暴增。',{law:-10,joy:-8,intl:-3},['資訊安全','保護電腦系統與資料，不讓駭客入侵、竊取或破壞。'],
+ ['公開道歉並通報',{law:3,intl:2,joy:-2},'你誠實面對並通知受害民眾，雖然被批評，但讓大家知道該如何防範。'],
+ ['強化資安防護',{wealth:-10,edu:3,law:4},'政府投入經費建立資安團隊，系統更安全，也培養了人才。'],
+ ['懲處相關人員',{law:5,joy:-3},'負責人員被處分，人民覺得政府有擔當，但問題的根本沒有解決。'],
+ ['低調處理',{law:-8,joy:-5,wealth:2},'你選擇不張揚，但消息仍然流傳，人民對政府的信任更低了。']),
+'興建鐵路':A('列車出軌','鐵軌老舊失修，一班載滿旅客的火車在轉彎處出軌。',{joy:-10,wealth:-6,intl:-3},['出軌','火車離開鐵軌，可能造成嚴重的傷亡，通常和軌道維修不良或超速有關。'],
+ ['全面檢修路線',{wealth:-10,dev:5},'全線鐵路逐段檢修、更換老舊枕木，雖然花錢，但安全提高了。'],
+ ['限速行駛',{dev:-4,joy:-2},'列車放慢速度，事故減少，但旅程變久、運量下降。'],
+ ['更新信號系統',{wealth:-12,edu:3,dev:4},'新的信號系統讓列車自動減速與停車，工程師也學到新技術。'],
+ ['補償傷亡家屬',{wealth:-8,joy:5},'你誠心補償受害家庭，大家感受到溫暖，但路線的問題仍待解決。'])
+};
+SP.splice(SP.findIndex(e=>e.title=='核電廠意外！'),1); // 核災已轉移為意外事件
+
+/* ---------- 開局 ---------- */
+let a={};
+function rnd(){
+ // 初始參數：開發、財富、教育、法治偏低；自然環境偏高；其餘適中（總和350）
+ const B={dev:[35,55],wealth:[35,55],edu:[35,55],law:[35,55],joy:[40,65],intl:[40,65],nature:[40,100]};
+ const R=(lo,hi)=>lo+(Math.random()*(hi-lo+1)|0);
+ a={dev:R(36,48),wealth:R(36,48),edu:R(36,48),law:R(36,48),joy:R(42,60),intl:R(42,60),nature:R(70,100)};
+ let g=0;
+ while(sum()!=350&&g++<5000){
+  const d=sum()<350?1:-1;
+  const c=S.map(s=>s[0]).filter(k=>a[k]+d>=B[k][0]&&a[k]+d<=B[k][1]);
+  if(!c.length)break;a[c[Math.random()*c.length|0]]+=d;
+ }
+ drawA();
+}
+const sum=()=>S.reduce((t,s)=>t+a[s[0]],0);
+function adj(k,dir){
+ const pool=350-sum();
+ if(dir>0){const d=Math.min(5,100-a[k],pool);a[k]+=d}
+ else{const d=Math.min(5,a[k]-1);a[k]-=d}
+ drawA();
+}
+function drawA(){
+ $('alloc').innerHTML=S.map(s=>`<div class="row"><span class="nm">${s[2]} ${s[1]}</span><button onclick="adj('${s[0]}',-1)">－</button><div class="bar"><i style="width:${a[s[0]]}%"></i></div><button onclick="adj('${s[0]}',1)">＋</button><span class="v">${a[s[0]]}</span></div>`).join('');
+ const p=350-sum();$('pool').textContent=p;$('go').disabled=p!==0;
+}
+function begin(){
+ name=$('nm').value.trim()||'無名王國';
+ st={...a};flags={};idx=0;spDone={};log=[];pol={};accPend=[];accDone={};lastAcc=-1;ulSeen={};ulNew={};
+ $('start').classList.add('hide');$('game').classList.remove('hide');
+ $('cn').textContent='👑 '+name;
+ initMap();drawStats({});nextEv();
+}
+
+/* ---------- 遊戲流程 ---------- */
+const ok=o=>o.req.every(([k,op,v])=>op=='>'?st[k]>v:st[k]<v);
+function drawStats(d){
+ $('stats').innerHTML=S.map(s=>{const k=s[0],c=d[k];
+  return `<div class="row"><span class="nm">${s[2]} ${s[1]}</span><div class="bar"><i style="width:${st[k]}%"></i></div><span class="v">${st[k]}</span><span class="dl ${c>0?'up':'dn'}">${c?(c>0?'+':'')+c:''}</span></div>`}).join('');
+}
+function drawTL(cur){
+ $('tl').innerHTML=EV.map((e,i)=>`<span class="${i<idx?'ok':''} ${i==cur?'on':''}">${e.era}</span>`).join('');
+}
+let cur=null;
+function nextEv(){
+ const dead=S.find(s=>st[s[0]]<=0);
+ if(dead)return end(dead);
+  if(idx<EV.length&&lastAcc!==idx){
+  lastAcc=idx;
+  const hit=accPend.find(()=>Math.random()<ACC_P);
+  if(hit){
+   accPend=accPend.filter(n=>n!=hit);accDone[hit]=1;
+   const a=ACC[hit],d={};
+   for(const k in a.dmg){const b=st[k];st[k]=Math.max(1,b+a.dmg[k]);d[k]=st[k]-b}
+   const dm=Object.keys(d).map(k=>`<span class="dn">${N[k]}${d[k]}</span>`).join('　');
+   cur={era:'💥 意外事件',title:a.t,txt:`${a.txt}<div class="res lnk" style="border-left-color:var(--bad)"><b>造成損害：</b>${dm}</div><div class="gl">📖 <b>【${a.g[0]}】</b>${a.g[1]}</div><p>你要採取什麼補救行動呢？</p>`,acc:1,opts:a.opts};
+   drawStats(d);drawTL(-1);showEv();return;
+  }
+ }
+ const crd=idx<EV.length?CR.find(c=>c.cond()&&lastCr[c.key]!==idx):null;
+ if(crd){lastCr[crd.key]=idx;cur={era:crd.era,title:crd.title,txt:crd.txt,opts:crd.opts()}}
+ else cur=SP.find(e=>!spDone[e.title]&&e.cond());
+ if(cur){if(!crd)spDone[cur.title]=1}
+ else if(idx<EV.length){cur=EV[idx];cur.main=1}
+ else return end();
+ drawTL(cur.main?idx:-1);
+ showEv();
+}
+function optBtn(o,i){
+ const can=ok(o);
+ if(cur&&cur.acc)return `<button class="opt" onclick="pick(${i})"><b>${o.n}</b></button>`;
+ const cd=o.req.length?o.req.map(([k,op,v])=>{const m=st[k]>v;return N[k]+'＞'+v+(m?' ✓':' ✗（現在'+st[k]+'）')}).join('、'):'無條件';
+ const hint=(o.l||[]).some(x=>flags[x[0]])?'<div class="lkt">🔗 這個選擇可能受到先前決定的影響</div>':'';
+ return `<button class="opt ${can?'':'lk'}" ${can?'':'disabled'} onclick="pick(${i})"><b>${can?'':'🔒 '}${o.n}</b><div class="cd mu">條件：${cd}</div>${can?hint:''}</button>`;
+}
+function showEv(){
+ mode='choose';
+ const rs=[];
+ curOpts=cur.opts.concat(rs);
+ $('ev').innerHTML=`<div class="era">${cur.era}</div><h2 style="margin:.2em 0">${cur.title}</h2><p>${cur.txt}</p>`+
+  cur.opts.map((o,i)=>optBtn(o,i)).join('')+
+  (rs.length?`<div class="era" style="margin-top:14px">🆘 國家危機！可以用強項換取補救：</div>`+rs.map((o,j)=>optBtn(o,cur.opts.length+j)).join(''):'');
+ drawPol();
+}
+function pick(i){
+ mode="result";const o=curOpts[i],d={},L=(o.l||[]).filter(x=>flags[x[0]]),tot={...o.fx};
+ L.forEach(x=>{for(const k in x[1])tot[k]=(tot[k]||0)+x[1][k]});
+ for(const k in tot){const b=st[k];st[k]=Math.max(0,Math.min(100,b+tot[k]));d[k]=st[k]-b}
+ if(o.flag)o.flag.split(',').forEach(f=>flags[f]=1);
+ addBuild(o.n);
+ if(ACC[o.n]&&!accDone[o.n]&&!accPend.includes(o.n))accPend.push(o.n);
+ if(cur.main)idx++;
+ log.push({t:cur.title,n:o.n,sp:!cur.main,rs:o.rs,ac:cur.acc});
+ const ul=checkUL();
+ drawStats(d);drawPol();
+ const lk=L.map(x=>{const v=Object.values(x[1]).reduce((p,q)=>p+q,0);return `<div class="res lnk" style="border-left-color:${v>=0?'var(--good)':'var(--bad)'}">🔗 <b>連鎖效應：</b>${x[2]}</div>`}).join('');
+ $('ev').innerHTML=`<div class="era">${cur.era}・${cur.title}</div><p>你選擇了：<b>${o.n}</b></p><div class="res">${o.res}</div>${(GL[o.n]||[]).length?'<div class="gl">📖 <b>小知識</b>'+GL[o.n].map(g=>`<div><b>【${g[0]}】</b>${g[1]}</div>`).join('')+'</div>':''}${lk}${ul}<div class="chg">${Object.keys(d).map(k=>`<span class="${d[k]>=0?'up':'dn'}">${N[k]} ${d[k]>0?'+':''}${d[k]}</span>`).join('')}</div><button class="pri" onclick="nextEv()">下一個事件 ▶</button>`;
+ drawTL(-1);
+}
+const esc=t=>t.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function end(dead){
+ mode="end";drawPol();
+ const t=S.reduce((x,s)=>x+st[s[0]],0);
+ const lv=k=>st[k]>60?'H':st[k]<40?'L':'M';
+ // 建國歷程
+ const pk=Object.keys(pol),hist=log.map(x=>`<div>${x.rs?'🆘 ':x.ac?'💥 ':x.sp?'⚠️ ':'• '}<b>${x.t}</b>：${x.n}</div>`).join('')+(pk.length?`<div>🏛️ <b>國家政策</b>：${pk.map(k=>k+'×'+pol[k]).join('、')}</div>`:'');
+ let ti,sum;
+ if(dead){
+  ti='國家崩潰了…';
+  sum=`「${N[dead[0]]}」降到了 0，國家無法再運作下去。每一項能力都很重要，要小心平衡喔！`;
+ }else{
+  // 依「財富」與「自然環境」的高(>60)、中(40~60)、低(<40)決定稱號與第一句
+  const T={HH:['🏆 永續發展典範','你讓國家既富裕又美麗，經濟與環境兩全其美！'],
+   HM:['💰 富裕穩健的國家','國家相當富裕，環境也維持在不錯的狀態，經濟與環境大致取得平衡。'],
+   HL:['🏭 黑煙大國','國家很有錢，卻烏煙瘴氣，環境為經濟發展付出了沉重的代價。'],
+   MH:['🌿 綠色宜居國','環境保護得很好，財政也還算穩健，是個適合居住的國家。'],
+   MM:['⚖️ 平衡發展的國家','財富與環境都在中等水準，發展與保護拿捏得還不錯。'],
+   ML:['🌫️ 環境亮紅燈的國家','財政勉強維持，但環境已經嚴重受損，需要趕快補救。'],
+   LH:['🍃 青山綠水小國','青山綠水保護得很好，但國庫不豐，經濟發展還有很大的進步空間。'],
+   LM:['🌱 努力打拼的國家','財富不多，環境也只是普通，國家仍在努力打拼的階段。'],
+   LL:['🥀 內憂外患的國家','國庫空虛、環境又受損，經濟與環境都需要加強。']};
+  const c=T[lv('wealth')+lv('nature')];ti=c[0];
+  // 第二句：其他參數的高低
+  const hiP={dev:'建設完善',edu:'人才輩出',law:'法治健全',joy:'人民安居樂業',intl:'國際地位崇高'};
+  const loP={dev:'建設不足',edu:'國民素質有待提升',law:'貪汙與犯罪問題嚴重',joy:'人民怨聲載道',intl:'外交處處碰壁'};
+  const oth=['dev','edu','law','joy','intl'],hs=oth.filter(k=>lv(k)=='H'),ls=oth.filter(k=>lv(k)=='L');
+  let s2;
+  if(ls.includes('edu')&&ls.includes('law')){s2='不過國民目不識丁，貪汙和犯罪事件頻傳'+(ls.length>2?'，'+ls.filter(k=>k!='edu'&&k!='law').map(k=>loP[k]).join('、'):'')+'。'+(hs.length?`所幸${hs.map(k=>hiP[k]).join('、')}。`:'')}
+  else if(hs.length&&ls.length)s2=`在其他方面，${hs.map(k=>N[k]+'高、'+hiP[k]).join('；')}，但${ls.map(k=>N[k]+'偏低、'+loP[k]).join('；')}。`;
+  else if(hs.length)s2=`在其他方面，${hs.map(k=>N[k]+'高、'+hiP[k]).join('；')}，表現亮眼。`;
+  else if(ls.length)s2=`不過${ls.map(k=>N[k]+'偏低、'+loP[k]).join('；')}。`;
+  else s2='其他各項能力都落在中等水準，沒有特別突出，也沒有明顯的缺點。';
+  // 第三句：整體鼓勵或建議
+  const vals=S.map(s=>st[s[0]]),spread=Math.max(...vals)-Math.min(...vals);
+  const lowAll=S.filter(s=>lv(s[0])=='L').map(s=>N[s[0]]);
+  let s3;
+  if(!lowAll.length&&spread<=35)s3='整體發展得很平均，沒有哪一項被犧牲，這是最穩健的治國方式，值得大大鼓勵！';
+  else if(!lowAll.length)s3='整體沒有明顯的弱點，繼續保持就會更好！';
+  else s3=`下次可以試著多補強「${lowAll.join('、')}」，國家會更穩健。`;
+  sum=c[1]+s2+s3;
+ }
+ const V=S.map(s=>st[s[0]]),mean=t/7,sd=Math.sqrt(V.reduce((a,v)=>a+(v-mean)**2,0)/7);
+ const hiN=V.filter(v=>v>=70).length,loV=V.filter(v=>v<30);
+ const p1=Math.max(0,Math.min(1,(t-250)/200))*30,p2=Math.min(hiN,6)/6*30,p3=Math.max(0,Math.min(1,(30-sd)/22))*20;
+ let p4=20;loV.forEach(v=>p4-=4+(30-v)*.6);p4=Math.max(0,p4);
+ const sc=Math.round(p1+p2+p3+p4),G=[[90,'S'],[80,'A+'],[70,'A'],[60,'A-'],[50,'B+'],[40,'B'],[0,'B-']];
+ const gr=dead?'B-':G.find(g=>sc>=g[0])[1],gc=gr=='S'?'#e0a800':gr[0]=='A'?'var(--ac)':'var(--mu)';
+ const gradeHtml=`<div class="gl" style="text-align:center"><div style="font-size:3rem;font-weight:800;line-height:1.1;color:${gc}">${gr}</div><div><b>國家評級</b>（${sc} 分）${dead?'<div>國家崩潰，評級固定為 B-</div>':''}</div><div class="mu" style="margin-top:4px">七項總和 ${t}（${Math.round(p1)}/30）｜高屬性≥70：${hiN} 項（${Math.round(p2)}/30）｜均衡度標準差 ${sd.toFixed(1)}（${Math.round(p3)}/20）｜低屬性＜30：${loV.length} 項（${Math.round(p4)}/20）</div></div>`;
+ drawTL(-1);
+ $('ev').innerHTML=`<div class="era">結局</div><h2>${ti}</h2>${gradeHtml}<p><b>${esc(name)}</b>走過了人類文明的各個階段。${sum}</p>
+ <div class="gl"><b>📜 你的建國歷程</b>${hist}</div>
+ <p>最終七項總和：<b>${t}</b>（起始為 350）</p><button class="pri" onclick="location.reload()">🔄 再玩一次</button>`;
+}
+rnd();
+</script>
+</body>
+</html>
