@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<!-- 國小社會-平衡環境與發展　版本 1.4 -->
+<!-- 國小社會-平衡環境與發展　版本 1.7 -->
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>國小社會-平衡環境與發展 v1.4</title>
+<title>國小社會-平衡環境與發展 v1.7</title>
 <style>
 :root{--bg:#f4f1e8;--card:#fffdf7;--tx:#2b2a26;--mu:#6d6a60;--ac:#2f7d5b;--bd:#d9d3c0;--bad:#c0452f;--good:#2f7d5b;--lock:#ebe7da;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1b1d1a;--card:#262925;--tx:#ece8da;--mu:#a29e90;--ac:#5fbf93;--bd:#3d4039;--bad:#ef7b64;--good:#6fd0a3;--lock:#2f322d;color-scheme:dark}}
@@ -12,7 +12,7 @@
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--tx);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.6}
-.wrap{max-width:980px;margin:0 auto;padding:16px}#start{max-width:720px;margin:0 auto}.gm{display:grid;grid-template-columns:1fr 250px;gap:12px;align-items:start}.pol{position:sticky;top:8px;max-height:calc(100vh - 16px);overflow-y:auto}.po{display:block;width:100%;text-align:left;margin:6px 0;padding:8px 10px}.po .cd{font-size:.82rem}.po.lk{background:var(--lock);color:var(--mu);opacity:.5;filter:grayscale(1);cursor:not-allowed}#pmsg{margin-top:8px;font-size:.88rem}@media (prefers-reduced-motion:reduce){.pop{animation:none}}.sea{fill:#a9d6ec}#map .o [fill]:not([fill="none"]){stroke:#3a3a3a;stroke-width:1;stroke-linejoin:round;stroke-linecap:round}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .sea{fill:#2b5470}}:root[data-theme="dark"] .sea{fill:#2b5470}@keyframes pop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}.pop{animation:pop .55s ease-out;transform-box:fill-box;transform-origin:50% 100%}.pp{display:flex;justify-content:space-between;align-items:center;width:100%;margin:5px 0;padding:8px 10px;font-weight:700}.pp.on{background:var(--ac);color:#fff;border-color:var(--ac)}.pc{margin:2px 0 8px 6px;border-left:3px solid var(--bd);padding-left:6px}@media(max-width:760px){.gm{grid-template-columns:1fr}.pol{position:static;max-height:none}}
+.wrap{max-width:1260px;margin:0 auto;padding:16px}#start{max-width:720px;margin:0 auto}.gm{display:grid;grid-template-columns:290px minmax(0,1fr) 250px;grid-template-areas:"side mid pol";gap:12px;align-items:start}.mid{grid-area:mid}.side{grid-area:side;position:sticky;top:8px;max-height:calc(100vh - 16px);overflow-y:auto}.mini{display:none}.mini span{background:var(--card);border:1px solid var(--bd);border-radius:99px;padding:2px 8px;font-size:.8rem}#ev{font-size:1.02rem}.pol{grid-area:pol;position:sticky;top:8px;max-height:calc(100vh - 16px);overflow-y:auto}.po{display:flex;align-items:center;gap:8px;width:100%;text-align:left;margin:6px 0;padding:8px 10px}.pi{flex:none}.pi svg{width:38px;height:38px;display:block}.pt{flex:1;min-width:0}.po .cd{font-size:.82rem}.po.lk{background:var(--lock);color:var(--mu);opacity:.5;filter:grayscale(1);cursor:not-allowed}#pmsg{margin-top:8px;font-size:.88rem}@media (prefers-reduced-motion:reduce){.pop{animation:none}}.sea{fill:#a9d6ec}#map .o [fill]:not([fill="none"]){stroke:#3a3a3a;stroke-width:1;stroke-linejoin:round;stroke-linecap:round}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .sea{fill:#2b5470}}:root[data-theme="dark"] .sea{fill:#2b5470}@keyframes pop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}.pop{animation:pop .55s ease-out;transform-box:fill-box;transform-origin:50% 100%}.pp{display:flex;justify-content:space-between;align-items:center;width:100%;margin:5px 0;padding:8px 10px;font-weight:700}.pp.on{background:var(--ac);color:#fff;border-color:var(--ac)}.pc{margin:2px 0 8px 6px;border-left:3px solid var(--bd);padding-left:6px}@media(max-width:1000px){.gm{grid-template-columns:1fr;grid-template-areas:"mid" "side" "pol"}.side,.pol{position:static;max-height:none}.mini{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}}
 h1{font-size:1.5rem;margin:.2em 0}
 .card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px;margin:12px 0}
 .mu{color:var(--mu);font-size:.9rem}
@@ -31,7 +31,7 @@ button:disabled{opacity:.45;cursor:not-allowed}
 .tl span{font-size:.75rem;padding:2px 8px;border-radius:99px;border:1px solid var(--bd);color:var(--mu)}
 .tl .on{background:var(--ac);color:#fff;border-color:var(--ac)}
 .tl .ok{background:var(--lock)}
-.opt{display:block;width:100%;text-align:left;margin:8px 0;padding:12px}
+.opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;margin:8px 0;padding:10px 12px}.oi{flex:none}.oi svg{width:56px;height:56px;display:block}.ot{flex:1;min-width:0}
 .opt b{font-size:1.05rem}
 .opt.lk{background:var(--lock);color:var(--mu);opacity:.5;filter:grayscale(1);cursor:not-allowed}.opt.lk b{text-decoration:line-through}.lkt{font-size:.8rem;color:var(--ac)}.res.lnk{border-left-color:var(--bad)}
 .opt .cd{font-size:.85rem}
@@ -44,7 +44,7 @@ button:disabled{opacity:.45;cursor:not-allowed}
 </head>
 <body>
 <div class="wrap">
-<h1>🏛️ 國小社會-平衡環境與發展 <span class="mu" style="font-size:.9rem;font-weight:400">v1.4</span></h1>
+<h1>🏛️ 國小社會-平衡環境與發展 <span class="mu" style="font-size:.9rem;font-weight:400">v1.7</span></h1>
 
 <div id="start">
  <div class="card">
@@ -64,7 +64,12 @@ button:disabled{opacity:.45;cursor:not-allowed}
 </div>
 
 <div id="game" class="hide"><div class="gm">
- <div>
+ <div class="mid">
+  <div id="mini" class="mini"></div>
+  <div class="tl" id="tl"></div>
+  <div class="card" id="ev"></div>
+ </div>
+ <div class="side">
   <div class="card">
    <b id="cn"></b>
    <div id="stats" style="margin-top:6px"></div>
@@ -72,12 +77,10 @@ button:disabled{opacity:.45;cursor:not-allowed}
   <div class="card"><b id="mtitle">🗺️ 你美麗的國家</b> <span class="mu" id="mcap"></span>
    <svg id="map" viewBox="0 0 400 260" role="img" aria-label="你美麗的國家" style="width:100%;max-height:340px;display:block;border-radius:10px;margin-top:6px"></svg>
   </div>
-  <div class="tl" id="tl"></div>
-  <div class="card" id="ev"></div>
  </div>
  <aside class="card pol"><b>🏛️ 國家政策</b><div class="mu">點選想強化的能力，展開政策。每個政策最多使用 2 次：第 1 次強化大於代價，第 2 次代價大於強化；代價的參數不夠扣時，強化效果會按比例減少。部分政策（🔒）要完成特定事件或選擇後才會解鎖</div><div id="pols"></div><div id="pmsg"></div></aside>
 </div></div>
-<p class="mu" style="text-align:center;margin:18px 0 6px">國小社會-平衡環境與發展　版本 1.4</p>
+<p class="mu" style="text-align:center;margin:18px 0 6px">國小社會-平衡環境與發展　版本 1.7</p>
 </div>
 
 <script>
@@ -322,7 +325,7 @@ const UL={
 '開放移民':{e:11,t:'進入「多元文化時期」後（社會願意接納不同文化的新居民）'},
 '舉辦國際賽事':{f:['airport','port'],t:'選擇【興建機場】或【擴建國際港口】後（有國際門戶，才能接待外國選手）'}
 };
-let ulSeen={},ulNew={};
+let ulSeen={},ulNew={},flagSrc={};
 const unlocked=p=>{const u=UL[p.n];return !u||(u.f||[]).some(f=>flags[f])||(u.e!=null&&idx>=u.e)};
 function checkUL(){
  const ns=PO.filter(p=>UL[p.n]&&!ulSeen[p.n]&&unlocked(p));
@@ -339,7 +342,7 @@ function drawPol(){
   const kids=on?'<div class="pc">'+PO.map((p,i)=>[p,i]).filter(([p])=>p.k==k).map(([p,i])=>{
    const fx=peff(p),used=pol[p.n]||0,ulk=unlocked(p),dis=off||!fx||!ulk;
    const eff=!ulk?'🔒 解鎖條件：'+UL[p.n].t:fx?Object.keys(fx).map(x=>`<span class="${fx[x]>0?'up':'dn'}">${N[x]}${fx[x]>0?'+':''}${fx[x]}</span>`).join('　'):'已用完（每個政策最多 2 次）';
-   return `<button class="po ${dis?'lk':''}" ${dis?'disabled':''} onclick="policy(${i})"><b>${ulk?'':'🔒 '}${p.n}</b> ${ulNew[p.n]?'<span class="lkt">🆕 新解鎖</span>':''}<span class="mu">${ulk&&fx?'（第'+(used+1)+'次／共2次）':''}</span><div class="cd">${eff}</div></button>`}).join('')+'</div>':'';
+   return `<button class="po ${dis?'lk':''}" ${dis?'disabled':''} onclick="policy(${i})"><span class="pi">${gameIcon(p.n,38,gameIcon.SC[p.k])}</span><span class="pt"><b>${ulk?'':'🔒 '}${p.n}</b> ${ulNew[p.n]?'<span class="lkt">🆕 新解鎖</span>':''}<span class="mu">${ulk&&fx?'（第'+(used+1)+'次／共2次）':''}</span><div class="cd">${eff}</div></span></button>`}).join('')+'</div>':'';
   return `<button class="pp ${on?'on':''}" onclick="togP('${k}')"><span>${s[2]} 強化${s[1]}${PO.some(p=>p.k==k&&ulNew[p.n])?' 🆕':''}</span><span>${on?'▲':'▼'}</span></button>${kids}`}).join('');
 }
 function policy(i){
@@ -601,12 +604,53 @@ function mood(){
  if(sm)sm.setAttribute('opacity',st.nature<45?((45-st.nature)/45*.5).toFixed(2):0);
 }
 
-/* ---------- 💥 意外事件（v1.4）----------
+/* ---------- v1.5：敘事合理性檢核與修正 ---------- */
+const fixL=(name,flag,text,fx)=>{for(const ev of [...EV,...SP]){const o=ev.opts.find(o=>o.n==name);if(o){const l=(o.l||[]).find(x=>x[0]==flag);if(!l)throw name+'/'+flag;l[2]=text;if(fx)l[1]=fx;return}}throw name};
+// (1) 時序錯誤：核電廠在大學「之後」才興建，原本掛在【創辦大學】的核電連鎖永遠不會發生 → 改成掛在【興建核能電廠】，由先前創辦的大學帶來人才
+{const o=fo(EV0[4],'創辦大學');o.l=(o.l||[]).filter(x=>x[0]!='nuclear')}
+L2('興建核能電廠',['uni',{dev:5,wealth:3},'先前創辦的大學培養出足夠的電機與核能工程人才，電廠的興建與運轉都更順利。']);
+// (2) 紡織工廠另外記下「textile」，之後關閉煤礦時才能正確判斷是否還有工廠
+fo(EV0[1],'興建紡織工廠').flag='factory,textile';
+// (3) 文字修正：記號「factory」可能來自工廠或煤礦，用語要涵蓋兩者；核電、重工業的說法也要與事實相符
+fixL('擴建國際港口','factory','工廠與礦場的產品有了出口管道，生意興隆。');
+fixL('設立衛生所','factory','工廠與礦場的污染讓病人特別多，衛生所不堪負荷。');
+fixL('訂立勞工保護法','factory','工廠與礦場的老闆強烈反彈，企業成本上升，但勞工更有保障。');
+fixL('徵收碳稅','heavy','鋼鐵業是耗能大戶，碳稅讓成本大增，工廠抱怨連連。');
+fixL('徵收碳稅','nuclear','電力主要來自核能，碳排很低，電價不會因碳稅而大漲。');
+fixL('發展再生能源','nuclear','既有的核能電廠已提供大量穩定的電力，再生能源與它功能重疊，造成重複投資。');
+// (4) 連鎖效應的呈現規則：①先寫不利、再寫有利，中間自動加「不過，」；②「加工出口區」比「一般工廠」更具體，兩者同時成立時只算前者，避免重複敘述
+// (5) 前後矛盾的連鎖（例：先火力發電、後再生能源）改用「時序合理化」的整合敘述
+const DL={
+'承諾大幅減碳':()=>{
+ const hist=['thermal','petro'].filter(f=>flags[f]),good=['renew','carbon'].filter(f=>flags[f]);
+ const hn={thermal:'火力發電',petro:'石化產業'},gn={renew:'再生能源',carbon:'碳稅制度'};
+ const H=hist.map(f=>hn[f]).join('與'),G=good.map(f=>gn[f]).join('與');
+ if(hist.length&&good.length){
+  const fx={intl:3+good.length,wealth:-4};if(flags.renew)fx.nature=3;
+  return [['',fx,`過去${H}的大量碳排，曾讓國際社會質疑我國的減碳決心；如今${G}的成果有目共睹，各國轉而肯定你，承諾也更有說服力。`,hist.concat(good)]];
+ }
+ if(hist.length)return [['',{wealth:-6*hist.length,intl:-4*hist.length},`${H}的碳排量太大，減碳目標難以達成，被國際批評。`,hist]];
+ if(good.length){const fx={intl:5*good.length};if(flags.renew)fx.nature=3;return [['',fx,`${G}已有成果，承諾可信度高，更有說服力。`,good]]}
+ return [];
+}};
+function relFlags(o){
+ let r=DL[o.n]?['thermal','petro','renew','carbon'].filter(f=>flags[f]):(o.l||[]).map(x=>x[0]).filter(f=>flags[f]);
+ if(r.includes('epz'))r=r.filter(f=>f!='factory');
+ return [...new Set(r)].filter(f=>flagSrc[f]);
+}
+function linkList(o){
+ let L=DL[o.n]?DL[o.n]():(o.l||[]).filter(x=>flags[x[0]]);
+ if(L.some(x=>x[0]=='epz'))L=L.filter(x=>x[0]!='factory');
+ const sg=x=>Object.values(x[1]).reduce((p,q)=>p+q,0);
+ return [...L.filter(x=>sg(x)<0),...L.filter(x=>sg(x)>=0)];
+}
+
+/* ---------- 💥 意外事件（v1.3 新增）----------
  選了某些選項後，會「埋下」一個意外事件。之後每個一般事件回合前，都會有 ACC_P 的機率爆發（每個只會爆發一次）。
  爆發時先扣 dmg，再提供 4 種補救選項（選之前看不到效果）。 */
 const ACC_P=0.01;
 let accPend=[],accDone={},lastAcc=-1;
-const A=(t,txt,dmg,g,...r)=>({t,txt,dmg,g,opts:r.map(([n,fx,res])=>({n,req:[],fx,res}))});
+const A=(t,txt,dmg,g,...r)=>({t,txt,dmg,g,opts:r.map(([n,fx,res,clr])=>({n,req:[],fx,res,clr}))});
 const ACC={
 '生產化肥':A('土地鹽鹼化','長期大量使用化肥，加上灌溉水蒸發，鹽分累積在土壤表面，農田白茫茫一片，作物長不出來。',{dev:-10,wealth:-10,nature:-20},['鹽鹼化','土壤裡的鹽分過多，作物吸不到水分而枯死，土地也很難再耕種。'],
  ['改善排水設施',{dev:-5,nature:10},'你挖了排水溝把鹽分沖走，土地慢慢恢復，但工程花了不少人力。'],
@@ -617,10 +661,10 @@ const ACC={
  ['全面封鎖消息',{dev:-20,wealth:10,nature:-40},'你下令封鎖消息、繼續運轉，但輻射悄悄擴散，真相曝光後後果更嚴重。'],
  ['聯繫國際團隊',{intl:-10,dev:10},'國際專家迅速到場協助，危機慢慢控制住，但你也得承認處理能力不足。'],
  ['疏散災民',{joy:-10,nature:-10},'居民及時撤離沒有人傷亡，但家園一時無法回去，大家怨聲載道。'],
- ['永久停機',{wealth:-10,dev:-5,nature:5},'你決定讓電廠永久停止運轉，雖然損失慘重，但危險終於解除。']),
+ ['永久停機',{wealth:-10,dev:-5,nature:5},'你決定讓電廠永久停止運轉，雖然損失慘重，但危險終於解除。',['nuclear']]),
 '開採煤礦':A('礦坑坍塌','深處的礦坑因為支撐不足突然坍塌，許多礦工被困在地下。',{dev:-8,joy:-12,wealth:-6},['礦災','礦坑內發生坍塌、氣爆等意外，容易造成工人傷亡，所以需要嚴格的礦場安全規定。'],
  ['全力搜救',{wealth:-8,joy:6},'救難隊日夜挖掘，多數礦工平安獲救，全國都為他們鬆了一口氣。'],
- ['關閉礦坑',{wealth:-10,nature:6,dev:-6},'你決定封閉這座危險的礦坑，損失了產量，卻保護了工人的安全。'],
+ ['關閉礦坑',{wealth:-10,nature:6,dev:-6},'你決定封閉這座危險的礦坑，損失了產量，卻保護了工人的安全。',['mine']],
  ['隱瞞真相繼續開採',{law:-12,wealth:6,joy:-8},'你掩蓋了事故，礦場繼續運轉，但家屬的怒火與傳言越來越大。'],
  ['加強安全規範',{law:6,dev:-4,wealth:-6},'礦場必須定期檢查、配戴安全裝備，雖然成本增加，事故減少了。']),
 '興建紡織工廠':A('工廠大火','紡織廠裡的棉絮與電線走火，廠房被燒得精光，工人驚慌逃生。',{wealth:-10,joy:-8,dev:-5},['工業安全','工廠為了保護工人，要有消防設備、逃生通道與定期檢查的規定。'],
@@ -662,7 +706,7 @@ const ACC={
  ['緊急啟用備用發電機',{wealth:-10,nature:-4,dev:4},'備用發電機轟隆運轉，工廠勉強恢復，但燃料費驚人、噪音與廢氣也增加。'],
  ['與鄰國重新談判',{intl:-4,wealth:-6,dev:5},'經過談判，鄰國答應恢復供電，但你付出了更高的價格。'],
  ['實施輪流停電',{joy:-8,dev:-2},'各區輪流停電，勉強撐過去，但大家的生活與生產都被打亂。'],
- ['加速自建電廠',{wealth:-14,dev:8,nature:-5},'你決定自己蓋電廠，從此不再受制於人，但投資金額龐大。']),
+ ['加速自建電廠',{wealth:-14,dev:8,nature:-5},'你決定自己蓋電廠，從此不再受制於人，但投資金額龐大。',['import']]),
 '興建高速公路':A('重大車禍','大霧的清晨，高速公路上發生了多車連環追撞，傷亡慘重。',{joy:-10,wealth:-5},['連環車禍','很多車子因為來不及煞車而前後追撞，常見原因是大霧、超速或沒保持車距。'],
  ['加強測速與取締',{law:4,wealth:-4,joy:-2},'警察加強測速與取締，大家開車變得守規矩，事故減少。'],
  ['設置警示與護欄',{wealth:-8,joy:3},'路上增加了警示燈與護欄，行車更安全，但工程花了不少錢。'],
@@ -680,6 +724,150 @@ const ACC={
  ['補償傷亡家屬',{wealth:-8,joy:5},'你誠心補償受害家庭，大家感受到溫暖，但路線的問題仍待解決。'])
 };
 SP.splice(SP.findIndex(e=>e.title=='核電廠意外！'),1); // 核災已轉移為意外事件
+
+/* ---------- 🖼️ 選項圖示（v1.7，獨立封裝避免與遊戲其他程式衝突）---------- */
+const gameIcon=(()=>{
+const OL='stroke="#3a3a3a" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"';
+const R=(x,y,w,h,f,r=5)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${r}" fill="${f}" ${OL}/>`;
+const C=(x,y,r,f)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${f}" ${OL}/>`;
+const E=(x,y,rx,ry,f)=>`<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" fill="${f}" ${OL}/>`;
+const P=(d,f)=>`<path d="${d}" fill="${f}" ${OL}/>`;
+const L=(d,c='#3a3a3a',w=3)=>`<path d="${d}" fill="none" stroke="${c}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round"/>`;
+const F=(x,y,s=1,sad=0)=>`<g transform="translate(${x},${y}) scale(${s})"><circle cx="-7" cy="0" r="2.6" fill="#3a3a3a"/><circle cx="7" cy="0" r="2.6" fill="#3a3a3a"/><path d="${sad?'M-4 8Q0 4 4 8':'M-4 4Q0 9 4 4'}" fill="none" stroke="#3a3a3a" stroke-width="2.2" stroke-linecap="round"/><ellipse cx="-12" cy="4" rx="3.5" ry="2.2" fill="#ff9aa8" opacity=".75"/><ellipse cx="12" cy="4" rx="3.5" ry="2.2" fill="#ff9aa8" opacity=".75"/></g>`;
+const W=(x,y,w=10,h=10)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="2" fill="#d9f0ff" stroke="#3a3a3a" stroke-width="2"/>`;
+const T=(x,y,t,sz=34,c='#3a3a3a')=>`<text x="${x}" y="${y}" font-size="${sz}" font-weight="800" text-anchor="middle" fill="${c}" font-family="sans-serif">${t}</text>`;
+const G={
+field:()=>P('M16 94L34 50H104L92 94Z','#e9c85a')+L('M24 80H98M30 66H100','#8cba3f',4)+F(62,78,.8),
+wheat:()=>L('M60 102V40','#8a6b2e',4)+[[50,46],[48,62],[46,78],[70,46],[72,62],[74,78]].map(p=>E(p[0],p[1],6,11,'#f2c94c')).join('')+E(60,30,6,11,'#f2c94c'),
+canal:()=>R(14,62,92,34,'#8ed081',8)+P('M14 78Q34 66 54 78T94 78T106 72V94H14Z','#6ec3e8')+L('M26 86Q40 80 54 86T82 86','#fff',3),
+sack:()=>P('M40 44Q60 30 80 44L92 98Q60 108 28 98Z','#f5e6bd')+R(48,34,24,10,'#d9534f',4)+L('M60 88V70')+P('M60 72Q48 66 46 58Q58 58 60 72Z','#7ed56f')+P('M60 72Q72 66 74 58Q62 58 60 72Z','#7ed56f'),
+school:()=>R(22,60,76,38,'#ffd98a')+P('M16 62L60 30L104 62Z','#ea6a5a')+R(52,74,16,24,'#8a5a36',3)+W(30,70)+W(80,70)+L('M60 30V14')+P('M60 14H76L70 20L76 26H60Z','#ff6b6b')+F(60,64,.6),
+univ:()=>R(20,64,80,32,'#e8dcc0')+P('M30 64A30 30 0 0 1 90 64Z','#8fb8e8')+L('M60 34V20')+P('M60 20H76L70 26L76 32H60Z','#ff6b6b')+L('M36 68V94M52 68V94M68 68V94M84 68V94','#3a3a3a',3),
+factory:()=>R(20,58,72,38,'#b4b8cc')+P('M20 58L38 42V58L56 42V58L74 42V58H20Z','#9498ae')+R(78,28,14,34,'#8a8ea6',3)+C(82,22,7,'#fff')+C(94,13,5,'#fff')+F(52,80,.8),
+mine:()=>P('M14 96L46 42L62 66L80 36L108 96Z','#b79f84')+P('M46 96V80Q60 64 74 80V96Z','#3a3a3a')+L('M18 36L42 24','#8a5a36',5)+L('M26 22Q38 20 40 32','#3a3a3a',4),
+train:()=>R(24,40,72,52,'#ff8c7c',14)+R(34,50,52,22,'#d9f0ff',6)+R(48,28,24,12,'#6b6b78',4)+C(44,98,8,'#6b6b78')+C(76,98,8,'#6b6b78')+C(38,82,4,'#ffe27a')+C(82,82,4,'#ffe27a')+F(60,63,.7),
+tank:()=>R(26,46,68,50,'#9bd3ee',14)+L('M26 62H94','#fff',3)+P('M60 22Q72 36 60 46Q48 36 60 22Z','#6ec3e8')+F(60,80,.8),
+apartment:()=>R(34,26,52,72,'#f7b79a',6)+W(42,34)+W(68,34)+W(42,50)+W(68,50)+R(52,78,16,20,'#8a5a36',3)+F(60,68,.5),
+clinic:()=>R(22,50,76,48,'#fffaf0')+R(22,50,76,10,'#ff8c7c',3)+P('M54 16h12v9h9v12h-9v9H54v-9h-9V25h9Z','#e5534b')+F(60,80,.8),
+thermal:()=>R(24,64,72,32,'#b0b0c0')+R(34,30,14,36,'#9a9aae',3)+R(66,22,14,44,'#9a9aae',3)+R(34,44,14,6,'#e86a5a',0)+R(66,38,14,6,'#e86a5a',0)+C(41,22,7,'#fff')+C(73,14,6,'#fff')+F(60,84,.8),
+dam:()=>P('M14 98L32 38H88L106 98Z','#cfcfdc')+P('M32 38H88V52H32Z','#6ec3e8')+L('M44 68H76M40 82H80','#a8a8bc',3)+F(60,60,.7),
+nuclear:()=>P('M14 98Q36 70 28 34H58Q52 70 70 98Z','#e6e6f0')+P('M54 98Q72 74 66 48H94Q90 74 106 98Z','#d8d8e6')+C(42,24,9,'#fff')+C(78,36,8,'#fff')+F(40,72,.7),
+pylon:()=>L('M18 40H102','#3a3a3a',4)+L('M60 22L38 98M60 22L82 98M44 74H76M50 52H70M38 98H82','#3a3a3a',5)+L('M18 40Q60 56 102 40','#e0a800',3)+C(60,22,5,'#ffd23f'),
+book:()=>P('M60 42Q40 30 18 38V92Q40 84 60 94Q80 84 102 92V38Q80 30 60 42Z','#fff6e0')+L('M60 42V94')+L('M28 54Q44 50 52 56M28 68Q44 64 52 70M68 56Q76 50 92 54M68 70Q76 64 92 68','#9aa4b8',3),
+steel:()=>R(28,76,64,20,'#9aa4b8',4)+R(38,58,44,18,'#b8c0d2',4)+P('M60 12Q84 38 68 50Q78 58 60 66Q42 58 52 48Q38 36 60 12Z','#ff9a3c')+P('M60 36Q68 46 60 56Q52 46 60 36Z','#ffe27a'),
+petro:()=>R(20,52,38,44,'#dfe6ef',14)+R(62,38,38,58,'#eef2f7',14)+L('M20 68H58M62 58H100','#a8b4c8',3)+P('M80 10Q92 22 86 30Q92 34 80 38Q68 34 74 28Q66 22 80 10Z','#ff9a3c')+F(39,82,.6),
+ship:()=>P('M14 74H106L94 98H26Z','#4a6fa5')+R(42,50,36,24,'#fff',4)+R(54,36,12,14,'#e86a5a',3)+W(48,56,8,8)+W(64,56,8,8)+L('M14 104Q30 98 46 104T78 104T106 102','#6ec3e8',3),
+road:()=>P('M44 22H76L108 98H12Z','#6d6d7a')+L('M60 32V44M60 56V72M60 84V96','#fff',4)+R(52,66,16,12,'#ff8c7c',3),
+plane:()=>P('M60 14L69 48L106 70V82L69 72L66 96L80 106V112L60 106L40 112V106L54 96L51 72L14 82V70L51 48Z','#e8eefc')+C(60,46,4,'#79c6f0')+C(60,58,4,'#79c6f0'),
+windmill:()=>E(60,102,42,6,'#8ed081')+P('M55 100L58 52H62L65 100Z','#f5f5f5')+[0,120,240].map(a=>`<g transform="rotate(${a} 60 48)">${E(60,26,6,20,'#fff')}</g>`).join('')+C(60,48,6,'#ff8c7c'),
+tree:()=>R(54,64,12,34,'#a9714b',4)+C(60,46,28,'#5ac47f')+C(40,60,16,'#5ac47f')+C(80,60,16,'#5ac47f')+F(60,52,.8),
+flask:()=>R(44,16,32,8,'#c9d3e6',3)+P('M48 24H72V50L96 92Q100 102 88 102H32Q20 102 24 92L48 50Z','#d6f0ff')+P('M30 84H90L96 94Q98 102 88 102H32Q22 102 24 94Z','#7ed9a8')+C(52,76,4,'#fff')+C(68,66,3,'#fff'),
+chip:()=>L('M42 32V18M60 32V18M78 32V18M42 88V102M60 88V102M78 88V102M32 42H18M32 60H18M32 78H18M88 42H102M88 60H102M88 78H102','#3a3a3a',4)+R(32,32,56,56,'#4d5266',10)+R(44,44,32,32,'#8fb8e8',6)+F(60,62,.7),
+skyline:()=>R(16,58,26,42,'#9bc4e8')+R(44,36,32,64,'#7fb0dc')+R(78,64,26,36,'#a9cdea')+W(50,44,8,8)+W(62,44,8,8)+W(50,60,8,8)+W(62,60,8,8)+L('M46 26Q60 14 74 26M52 32Q60 24 68 32','#2f7d5b',4),
+gov:()=>P('M14 54L60 24L106 54Z','#e8dcc0')+R(22,56,76,8,'#efe9d6',2)+R(28,64,10,26,'#fff8e6',2)+R(55,64,10,26,'#fff8e6',2)+R(82,64,10,26,'#fff8e6',2)+R(16,90,88,10,'#d6cbb0',3)+L('M60 24V10')+P('M60 10H74L69 15L74 20H60Z','#ff6b6b'),
+scales:()=>R(54,30,12,60,'#e0a800',3)+L('M26 44H94','#3a3a3a',4)+L('M30 44L18 72M30 44L42 72M90 44L78 72M90 44L102 72')+P('M14 72H46Q44 86 30 86Q16 86 14 72Z','#ffd966')+P('M74 72H106Q104 86 90 86Q76 86 74 72Z','#ffd966')+R(40,92,40,10,'#e0a800',4),
+moneybag:()=>P('M44 36Q60 26 76 36L94 96Q60 110 26 96Z','#ffd966')+R(48,30,24,10,'#d9534f',4)+T(60,88,'$'),
+cash:()=>R(16,40,88,50,'#a8e6a0',8)+C(60,65,15,'#e9ffe6')+C(28,52,3,'#6bbf6b')+C(92,78,3,'#6bbf6b')+T(60,76,'$',22),
+chart:()=>R(20,24,80,74,'#fff',6)+R(30,68,14,22,'#7fb0dc',2)+R(52,54,14,36,'#7ed9a8',2)+R(74,40,14,50,'#ffb347',2)+L('M28 52L50 42L70 48L92 28','#e5534b',4),
+heart:()=>P('M60 102L22 64Q8 46 26 32Q46 22 60 44Q74 22 94 32Q112 46 98 64Z','#ff7a9a')+F(60,64,1),
+globe:()=>C(60,60,38,'#79c6f0')+P('M36 44Q50 36 58 46Q50 58 38 56Z','#7ed56f')+P('M66 66Q80 60 88 72Q80 84 68 80Z','#7ed56f')+L('M60 22Q80 60 60 98M60 22Q40 60 60 98M22 60H98','#fff',2.5),
+flag:()=>R(30,22,7,82,'#8a5a36',3)+P('M37 26H98L86 44L98 62H37Z','#ff6b6b')+C(52,44,5,'#fff'),
+megaphone:()=>P('M22 54L76 28V92L22 66Z','#ffb347')+R(12,52,14,16,'#e0a800',4)+R(26,68,16,20,'#e0a800',4)+L('M86 44Q96 60 86 76M94 34Q112 60 94 86','#3a3a3a',3),
+scroll:()=>P('M30 28H88Q98 28 98 38V84Q98 96 86 96H36Q24 96 24 84V44H34','#fff3cf')+L('M38 48H86M38 62H86M38 76H72','#9aa4b8',3),
+fire:()=>P('M60 12Q96 44 84 78Q80 100 60 102Q40 100 36 78Q28 60 48 44Q50 56 58 54Q52 34 60 12Z','#ff7a3c')+P('M60 52Q76 68 70 84Q66 96 60 96Q54 96 50 84Q46 68 60 52Z','#ffd23f')+F(60,82,.55),
+warning:()=>P('M60 20L104 98H16Z','#ffd23f')+L('M60 46V70','#3a3a3a',6)+C(60,84,4,'#3a3a3a'),
+hardhat:()=>P('M22 78Q22 38 60 38Q98 38 98 78Z','#ffcf3a')+R(14,78,92,12,'#ffb300',5)+R(54,30,12,16,'#ffb300',4)+F(60,66,.7),
+bin:()=>R(34,42,52,56,'#5ac47f',8)+R(28,32,64,12,'#3a9d5d',4)+R(50,22,20,8,'#3a9d5d',3)+L('M50 62L60 74L70 62M52 82H68','#fff',4),
+stadium:()=>E(60,76,46,24,'#e0e0ea')+E(60,76,32,15,'#5ac47f')+L('M14 68Q60 36 106 68','#3a3a3a',3)+L('M60 40V22')+P('M60 22H76L70 27L76 32H60Z','#ff6b6b'),
+hotel:()=>R(26,32,56,66,'#ff9eb0',6)+W(34,40,8,8)+W(50,40,8,8)+W(66,40,8,8)+W(34,58,8,8)+W(50,58,8,8)+W(66,58,8,8)+R(48,78,12,20,'#8a5a36',3)+P('M70 58Q92 40 108 60Z','#ffd23f')+L('M89 50V98'),
+cloud:()=>P('M30 88Q14 88 14 72Q14 58 30 58Q32 40 52 40Q68 38 74 54Q96 52 98 72Q98 88 82 88Z','#cfd3dc')+F(56,72,1,1),
+virus:()=>[[60,26],[60,94],[26,60],[94,60],[36,36],[84,36],[36,84],[84,84]].map(p=>L(`M60 60L${p[0]} ${p[1]}`,'#3a3a3a',3)+C(p[0],p[1],6,'#7bc44a')).join('')+C(60,60,26,'#9be26a')+F(60,62,.9,1),
+bolt:()=>P('M70 12L34 66H58L48 108L88 50H64Z','#ffd23f'),
+shield:()=>P('M60 16L100 30V60Q100 90 60 106Q20 90 20 60V30Z','#7aa8ff')+L('M42 60L55 74L80 46','#fff',6),
+ballot:()=>P('M46 18H74V58H46Z','#fff')+L('M52 36L58 44L68 28','#2f9e5f',4)+R(26,56,68,42,'#e6e6f2',6)+R(42,54,36,8,'#3a3a3a',3),
+calendar:()=>R(24,28,72,68,'#fff',8)+R(24,28,72,20,'#ff7a7a',6)+L('M42 20V34M78 20V34')+[42,60,78].map(x=>[62,80].map(y=>C(x,y,4,'#bfc7d8')).join('')).join(''),
+suitcase:()=>L('M46 48V36Q46 30 52 30H68Q74 30 74 36V48')+R(22,46,76,50,'#8a6fd6',8)+L('M38 46V96M82 46V96','#6a50b8',3)+R(54,64,12,10,'#ffd23f',3),
+park:()=>P('M12 98L48 40L70 70L86 50L108 98Z','#9aa8c0')+P('M48 40L40 54L48 52L54 56Z','#fff')+R(89,78,6,18,'#a9714b',2)+C(92,70,12,'#5ac47f'),
+gear:()=>[0,45,90,135].map(a=>`<g transform="rotate(${a} 60 60)">${R(54,22,12,76,'#c4c9d6',3)}</g>`).join('')+C(60,60,30,'#c4c9d6')+C(60,60,12,'#fff'),
+bus:()=>R(16,44,88,48,'#ffcf5a',12)+W(24,52,14,14)+W(42,52,14,14)+W(60,52,14,14)+W(78,52,14,14)+C(36,96,9,'#6b6b78')+C(84,96,9,'#6b6b78')+F(60,80,.6),
+oil:()=>P('M60 14Q92 56 86 78Q80 102 60 102Q40 102 34 78Q28 56 60 14Z','#3d4050')+L('M46 72Q44 82 50 88','#fff',3)+F(62,78,.8)
+};
+const SPEC={
+興修水利:'canal',土地改革:'field+scroll',生產化肥:'sack',農業學校:'school+wheat',靠天吃飯:'field+cloud',興建紡織工廠:'factory+gear',開採煤礦:'mine',興建鐵路:'train',關稅保護:'shield+moneybag',接受外國援助:'globe+heart',維持農業社會:'wheat',
+設立加工出口區:'factory+ship',發展電子代工:'chip',鼓勵外商投資:'globe+moneybag',擴建國際港口:'ship',保護內銷市場:'shield+flag',興建污水處理廠:'tank',興建公共住宅:'apartment',設立衛生所:'clinic',放任城市自由發展:'apartment+cloud',
+實施義務教育:'school',創辦大學:'univ',設立職業學校:'school+gear',開辦夜間識字班:'book',興建高速公路:'road',鐵路電氣化:'train+bolt',興建機場:'plane',推廣腳踏車與公車:'bus+tree',
+興建火力發電廠:'thermal',興建水力發電廠:'dam',興建核能電廠:'nuclear',向鄰國買電:'pylon+globe',呼籲節約用電:'bolt+heart',興建大煉鋼廠:'steel',發展石油化學工業:'petro',興建造船廠:'ship+gear',升級輕工業技術:'gear+book',不蓋重工業:'factory+tree',
+制定環境保護法:'scroll+tree',徵收碳稅:'cloud+moneybag',發展再生能源:'windmill',發起植樹造林:'tree',解除戒嚴:'megaphone',制定憲法:'scroll+flag',訂立勞工保護法:'hardhat+scroll',設立獨立法院:'scales',加強治安巡邏:'shield',
+設立科學園區:'chip+flask',推動網路教育:'book+chip',打造智慧城市:'skyline',成立數位政府:'gov+chip',維持傳統產業:'factory+wheat',推動母語教育:'book+megaphone',推動新住民政策:'suitcase+heart',尊重原住民族自治:'park+flag',打造無障礙友善環境:'apartment+heart',忽視少數群體:'cloud+heart',
+承諾大幅減碳:'globe+tree',提供技術援助:'globe+gear',只談經濟合作:'moneybag+globe',設立環保局:'gov+tree',要求工廠加裝過濾設備:'factory+shield',補償受害居民:'moneybag+heart',假裝沒事:'scroll+cloud',提高社會福利:'heart+moneybag',召開公民座談會:'megaphone+heart',強力鎮壓:'shield+warning',
+硬著頭皮撐下去:'warning',縮衣節食度日:'moneybag+cloud',封山保育:'park+shield',還田於河:'canal+field',退耕還林:'tree+field',引進環保科技:'flask+tree',國際環保合作:'tree+globe',發展觀光:'hotel',輸出技術:'chip+globe',招商引資:'globe+factory',開放資源開採:'mine+moneybag',募集愛國公債:'cash+flag',
+土地鹽鹼化:'field+warning',核子意外事故:'nuclear+warning',礦坑坍塌:'mine+warning',工廠大火:'fire+factory',嚴重空氣污染:'cloud+thermal',水庫淤積:'dam+warning',石化廠氣爆:'fire+petro',油輪漏油:'oil+ship',訂單驟減:'chart+warning',傳染病流行:'virus',鄰國斷電:'bolt+warning',重大車禍:'road+warning',個資外洩:'chip+warning',列車出軌:'train+warning',
+改善排水設施:'canal+tank',深耕換土:'field+hardhat',政府購地休耕:'field+moneybag',使用化學藥劑:'flask+field',全面封鎖消息:'shield+cloud',聯繫國際團隊:'globe+shield',疏散災民:'bus+shield',永久停機:'nuclear+shield',全力搜救:'hardhat+heart',關閉礦坑:'mine+shield',隱瞞真相繼續開採:'mine+cloud',加強安全規範:'shield+hardhat',
+補償受災工人:'cash+hardhat',全面檢修消防設備:'shield+fire',迅速重建廠房:'factory+hardhat',只賠償不改善:'cash+cloud',加裝脫硫設備:'thermal+shield',降低發電量:'thermal+bolt',發放口罩宣導防護:'heart+cloud',改用天然氣發電:'thermal+flask',疏濬清淤:'dam+hardhat',上游水土保持:'tree+canal',興建新水庫:'dam+moneybag',限水節約:'canal+warning',
+全面停工檢查:'petro+scroll',補償居民並遷廠:'moneybag+apartment',立即復工:'petro+bolt',引進自動監控:'chip+petro',動員民眾清理海岸:'oil+hardhat',聘請國際專家:'globe+flask',向船公司求償:'scales+ship',噴灑分散劑:'flask+oil',開拓新市場:'globe+ship',轉型升級產品:'chip+gear',紓困貸款給工廠:'moneybag+factory',降價搶訂單:'chart+cash',
+緊急設置隔離與醫療站:'clinic+virus',全面消毒與清潔:'flask+virus',鼓勵民眾自行就醫:'heart+virus',封城管制:'shield+apartment',緊急啟用備用發電機:'bolt+gear',與鄰國重新談判:'globe+scroll',實施輪流停電:'bolt+calendar',加速自建電廠:'thermal+hardhat',加強測速與取締:'shield+road',設置警示與護欄:'warning+road',全面限速管制:'road+scroll',鼓勵搭乘大眾運輸:'bus+heart',
+公開道歉並通報:'megaphone+shield',強化資安防護:'shield+chip',懲處相關人員:'scales+hardhat',低調處理:'gov+cloud',全面檢修路線:'train+hardhat',限速行駛:'train+gear',更新信號系統:'train+chip',補償傷亡家屬:'train+heart',
+強徵民工:'hardhat+warning',開墾山坡地:'park+field',興辦國營事業:'factory+flag',以工代賑:'hardhat+moneybag',強制徵稅:'moneybag+scroll',外國貸款:'gov+moneybag',刪除教育預算:'book+warning',出售國有土地:'flag+moneybag',
+強制入學:'school+scroll',設立獎學金:'book+moneybag',增加課業時數:'book+calendar',派遣留學生:'suitcase+book',總統直選:'ballot+flag',成立廉政機關:'scales+shield',公開政府預算:'scroll+moneybag',開放新聞自由:'megaphone+scroll',
+普發現金:'cash+heart',舉辦全國慶典:'flag+heart',週休二日:'calendar+heart',實施全民健保:'clinic+heart',國家公園:'park',禁止濫伐:'tree+shield',垃圾分類回收:'bin',汰換老舊汽機車:'bus+flask',開放移民:'suitcase+globe',舉辦國際賽事:'stadium+globe',簽署國際公約:'scroll+globe',國際人道援助:'heart+globe'
+};
+const SC={dev:'#ffd8a8',wealth:'#fff1a8',edu:'#bfdcff',law:'#dcc9ff',joy:'#ffc9dc',nature:'#c4f0c9',intl:'#b8eeee'};
+const SE={dev:'🏗️',wealth:'💰',edu:'📚',law:'⚖️',joy:'😊',nature:'🌳',intl:'🌏'};
+function iconSVG(item,size=96,opt={}){
+ const sp=(SPEC[item.n]||'warning').split('+'),fx=item.fx||{};
+ let gk=null,gv=0,ck=null,cv=0;
+ for(const k in fx){if(fx[k]>gv){gv=fx[k];gk=k}if(fx[k]<cv){cv=fx[k];ck=k}}
+ const bg=opt.bg||(item.isAcc?'#ffd0c8':(gk?SC[gk]:'#e6e2d6'));
+ let h=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="${size}" height="${size}"><rect x="3" y="3" width="114" height="114" rx="26" fill="${bg}" stroke="#3a3a3a" stroke-width="3"/>`;
+ h+=`<g transform="translate(60,62) scale(.8) translate(-60,-60)">${G[sp[0]]()}</g>`;
+ if(sp[1])h+=`<g transform="translate(6,70)"><rect width="42" height="42" rx="12" fill="#fff" stroke="#3a3a3a" stroke-width="2.5"/><g transform="translate(21,21) scale(.3) translate(-60,-60)">${G[sp[1]]()}</g></g>`;
+ if(gk&&!opt.noBadge)h+=`<g transform="translate(94,26)"><circle r="15" fill="#fff" stroke="#3a3a3a" stroke-width="2.5"/><text y="6" font-size="17" text-anchor="middle">${SE[gk]}</text></g>`;
+ if(ck&&!opt.noBadge)h+=`<g transform="translate(94,94)"><circle r="15" fill="#ffe3e0" stroke="#e5534b" stroke-width="2.5"/><text y="6" font-size="15" text-anchor="middle">${SE[ck]}</text><path d="M-14 -13H-4" stroke="#e5534b" stroke-width="4" stroke-linecap="round"/></g>`;
+ return h+'</svg>';
+}
+
+/* ---------- v1.7：依檢核意見新增／改畫的圖形 ---------- */
+const SK='#ffd9b0';
+const NO=(x,y,r)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="#fff" opacity=".55"/><circle cx="${x}" cy="${y}" r="${r}" fill="none" stroke="#e5534b" stroke-width="8"/><path d="M${x-r*.7} ${y+r*.7}L${x+r*.7} ${y-r*.7}" stroke="#e5534b" stroke-width="8" stroke-linecap="round"/>`;
+const dr=(x,y,s=1,f='#2b2d38')=>P(`M${x} ${y}C${x+10*s} ${y+10*s} ${x+9*s} ${y+22*s} ${x} ${y+22*s}C${x-9*s} ${y+22*s} ${x-10*s} ${y+10*s} ${x} ${y}Z`,f);
+const person=(x,y,o={})=>`<g transform="translate(${x},${y})">`+P('M-17 38Q-17 14 0 14Q17 14 17 38Z',o.shirt||'#7fb0dc')+C(0,0,13,SK)+P('M-13 -2Q-13 -16 0 -16Q13 -16 13 -2Q6 -9 -2 -8Q-9 -8 -13 -2Z',o.hair||'#4a3b32')+(o.hat||'')+F(0,3,.5)+'</g>';
+const HC=()=>P('M10 74H32Q42 96 68 96Q94 96 110 72L114 80Q106 110 66 110Q28 110 10 74Z',SK)+L('M30 84Q38 90 46 90','#c99a6b',2.5);
+const HUp=()=>HC();
+const Hn=(n,x,y)=>`<g transform="translate(${x},${y}) scale(${n}) translate(-60,-60)">`;
+Object.assign(G,{
+farmerPair:()=>R(10,94,100,8,'#8ed081',4)+person(40,44,{shirt:'#8fcf7a',hat:E(0,-9,20,5,'#e8c75a')+P('M-10 -10Q0 -26 10 -10Z','#f2d572')})+person(80,44,{shirt:'#6a7fb5',hair:'#6b6b78',hat:R(-9,-30,18,18,'#3a3a3a',3)+E(0,-12,14,3,'#3a3a3a')}),
+shade:()=>L('M12 100H108','#8ed081',5)+R(34,52,14,48,'#a9714b',4)+C(42,36,26,'#5ac47f')+C(22,48,14,'#5ac47f')+C(62,48,14,'#5ac47f')+C(82,74,9,SK)+F(82,76,.4)+P('M70 100Q70 85 82 85Q94 85 94 100Z','#ffb347')+E(98,98,10,4,'#6a7fb5')+L('M92 58Q100 54 106 60','#79c6f0',3)+L('M96 66Q104 62 108 68','#79c6f0',3),
+spinning:()=>L('M46 92L30 108M46 92L62 108','#a9714b',5)+C(46,64,28,'#f5deb3')+L('M46 36V92M18 64H74M26 44L66 84M66 44L26 84','#a9714b',3)+C(46,64,6,'#a9714b')+R(80,62,6,40,'#a9714b',2)+R(76,46,24,14,'#ff9eb0',4)+L('M72 58Q76 52 80 54','#ff6b6b',3),
+rails:()=>P('M50 22H70L112 108H8Z','#d8d0c0')+[0,1,2,3,4,5].map(i=>L(`M${60-14-i*4} ${34+i*13}H${60+14+i*4}`,'#a9714b',5)).join('')+L('M54 22L22 108','#9aa4b8',6)+L('M66 22L98 108','#9aa4b8',6),
+noGoods:()=>R(24,48,52,44,'#d9a35f',4)+L('M24 62H76M24 76H76M40 48V92M60 48V92','#a9714b',3)+R(70,70,28,26,'#e6b873',4)+NO(66,58,30),
+handsGive:()=>`<g transform="translate(0,116) scale(1,-1)">${HC()}</g>`+`<g transform="translate(60,58) scale(.3) translate(-60,-60)">${G.heart()}</g>`+`<g transform="translate(0,2)">${HC()}</g>`,
+domeGoods:()=>R(10,92,100,10,'#d6cbb0',4)+R(26,68,12,24,'#7ed56f',4)+R(29,58,6,12,'#7ed56f',2)+R(46,72,20,20,'#ffd966',4)+L('M66 78Q74 80 66 88')+P('M76 72L84 66H92L100 72L96 78V92H80V78Z','#ff9eb0')+`<path d="M10 92A50 50 0 0 1 110 92Z" fill="#bfe6ff" fill-opacity=".3" ${OL}/>`+L('M26 62Q38 42 58 38','#fff',4),
+sewage:()=>L('M12 98H108','#9a8a78',5)+C(38,74,22,'#bde3f5')+C(38,74,13,'#9bd3ee')+L('M38 74L48 66','#fff',3)+R(58,70,12,8,'#9a8a78',2)+C(86,76,18,'#bde3f5')+C(86,76,10,'#9bd3ee')+dr(20,12,.8,'#a67c52')+L('M24 38L32 50','#3a3a3a',3)+dr(98,12,.8,'#6ec3e8')+L('M94 54V44','#3a3a3a',3)+C(30,68,2.5,'#fff')+C(44,80,2.5,'#fff'),
+slum:()=>L('M8 100H112','#8a7a68',5)+`<g transform="rotate(-5 30 98)">${R(16,50,28,48,'#c9a27a',2)+P('M14 50H46L42 43H18Z','#9aa4b8')+W(20,56,7,7)+W(32,66,7,9)}</g><g transform="rotate(4 58 98)">${R(44,34,28,64,'#9fb4c9',2)+R(50,25,16,10,'#d9b36a',2)+W(48,42,8,8)+W(60,58,8,7)+W(50,76,7,9)}</g><g transform="rotate(-3 86 98)">${R(74,58,24,40,'#d9b36a',2)+P('M72 58H100L96 52H76Z','#9aa4b8')+W(78,66,7,7)+W(88,80,6,8)}</g><g transform="rotate(6 106 98)">${R(98,68,14,30,'#b58f7a',2)}</g>`+L('M8 36Q38 52 60 34T112 44','#3a3a3a',2)+C(18,97,5,'#bdb59d')+C(56,98,4,'#bdb59d'),
+nightABC:()=>R(16,20,88,80,'#2e3a6b',12)+C(32,34,2.5,'#ffe27a')+C(52,30,2,'#ffe27a')+C(70,40,2.5,'#ffe27a')+C(92,30,2,'#ffe27a')+C(86,40,10,'#ffe27a')+C(91,36,9,'#2e3a6b')+L('M26 92L36 62L46 92M30 82H42','#fff',5)+L('M54 62V92M54 62H62Q72 62 72 70Q72 78 62 78H54M62 78Q74 78 74 85Q74 92 62 92H54','#ffd23f',5)+L('M96 68Q80 60 80 78Q80 96 96 88','#7ed56f',5),
+boltFire:()=>`<g transform="translate(-6,12) scale(.62)">${G.bolt()}</g><g transform="translate(46,12) scale(.64)">${G.fire()}</g>`,
+valleyDam:()=>P('M8 100V42L50 76V100Z','#9aa8c0')+P('M112 100V38L70 72V100Z','#a9b6cc')+P('M24 60Q60 50 96 58L72 76H48Z','#6ec3e8')+P('M46 100L50 72H70L74 100Z','#cfcfdc')+L('M56 80V96M64 80V96','#a8a8bc',3)+L('M30 58Q42 54 54 60','#fff',3),
+noPower:()=>`<g transform="translate(60,60) scale(.58) translate(-60,-60)">${G.bolt()}</g>`+NO(60,60,40),
+hbeams:()=>[[14,70],[46,70],[78,70],[30,40],[62,40],[46,10]].map(p=>P(`M${p[0]} ${p[1]}H${p[0]+7}V${p[1]+11}H${p[0]+17}V${p[1]}H${p[0]+24}V${p[1]+30}H${p[0]+17}V${p[1]+19}H${p[0]+7}V${p[1]+30}H${p[0]}Z`,'#aab4c8')).join(''),
+noFactory:()=>`<g transform="translate(60,62) scale(.82) translate(-60,-60)">${G.factory()}</g>`+NO(60,62,38),
+noCut:()=>`<g transform="translate(6,4) scale(.74)">${G.tree()}</g>`+L('M70 56L100 102','#a9714b',7)+P('M60 56Q70 38 86 48L82 64Q66 68 60 56Z','#c4c9d6')+NO(84,74,26),
+tax:()=>C(60,34,22,'#ffd966')+C(51,26,4.5,'#fff')+C(69,42,4.5,'#fff')+L('M70 22L50 46','#d9534f',4)+L('M60 58V66','#3a3a3a',3)+E(58,86,36,20,'#ffb3c6')+P('M34 76L30 62L46 70Z','#ffb3c6')+E(94,88,8,6,'#ff8fab')+C(78,80,2.6,'#3a3a3a')+L('M50 70H66','#3a3a3a',4)+R(42,98,10,8,'#ffb3c6',3)+R(68,98,10,8,'#ffb3c6',3),
+policecap:()=>P('M22 74Q22 38 60 38Q98 38 98 74Z','#3a5fa5')+R(20,68,80,12,'#2b3f78',4)+P('M20 80H100Q106 94 60 98Q14 94 20 80Z','#2b3f78')+P('M60 44L63.5 53H72.5L65.5 58.5L68 67L60 62L52 67L54.5 58.5L47.5 53H56.5Z','#ffd23f'),
+twoPCs:()=>R(8,30,48,34,'#d9f0ff',5)+R(26,64,12,8,'#9aa4b8',2)+R(18,72,28,6,'#9aa4b8',3)+F(32,50,.55)+R(62,54,48,34,'#d9f0ff',5)+R(80,88,12,8,'#9aa4b8',2)+R(72,96,28,6,'#9aa4b8',3)+F(86,74,.55)+L('M32 26Q56 2 86 50','#2f7d5b',4)+C(32,26,4,'#7ed9a8')+C(86,50,4,'#7ed9a8'),
+motherSpeak:()=>C(44,18,8,'#6b4a2f')+P('M24 106Q22 62 44 54Q66 62 64 106Z','#ff9eb0')+C(56,86,14,'#ffb3c6')+C(44,36,14,SK)+P('M30 34Q30 20 44 20Q58 20 58 34Q52 28 44 28Q36 28 30 34Z','#6b4a2f')+F(44,39,.5)+P('M72 18H106Q114 18 114 26V46Q114 54 106 54H92L84 64V54H72Q64 54 64 46V26Q64 18 72 18Z','#fff')+L('M72 30H106M72 40H98','#79c6f0',3),
+newRes:()=>person(26,40,{shirt:'#ff8c7c',hair:'#2b2d38'})+person(60,40,{shirt:'#7fb0dc',hair:'#6b4a2f'})+person(94,40,{shirt:'#8fcf7a',hair:'#2b2d38'})+R(15,86,22,7,'#e5534b',0)+R(15,93,22,7,'#fff',0)+R(49,86,22,3,'#e5534b',0)+R(49,89,22,3,'#fff',0)+R(49,92,22,4,'#2d4fa8',0)+R(49,96,22,3,'#fff',0)+R(49,99,22,3,'#e5534b',0)+R(83,86,22,14,'#e5534b',0)+P('M94 88.5L95.3 91.9L98.9 92L96 94.2L97.1 97.6L94 95.6L90.9 97.6L92 94.2L89.1 92L92.7 91.9Z','#ffd23f'),
+wheelchair:()=>R(14,14,92,92,'#3a6fd6',18)+'<circle cx="50" cy="34" r="8" fill="#fff"/><path d="M50 46V70H74L84 92" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><path d="M50 56H68" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round"/><path d="M38 58A24 24 0 1 0 74 90" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>',
+eyesCover:()=>C(60,62,36,SK)+P('M24 58Q22 18 60 18Q98 18 96 58Q86 42 60 44Q34 42 24 58Z','#4a3b32')+L('M50 88Q60 84 70 88','#3a3b3a',3)+E(32,80,6,4,'#ff9aa8')+E(88,80,6,4,'#ff9aa8')+`<g transform="rotate(-8 42 62)">${R(26,44,32,32,'#ffcf9f',13)+L('M34 44V60M42 44V60M50 44V60','#c99a6b',2.5)}</g><g transform="rotate(8 78 62)">${R(62,44,32,32,'#ffcf9f',13)+L('M70 44V60M78 44V60M86 44V60','#c99a6b',2.5)}</g>`+E(36,80,6,9,'#ffcf9f')+E(84,80,6,9,'#ffcf9f'),
+techAid:()=>`<g transform="translate(0,2)">${HC()}</g>`+C(42,56,16,'#ffd966')+T(42,63,'$',20)+`<g transform="translate(80,52) scale(.45) translate(-60,-60)">${G.gear()}</g>`
+});
+// 石化：增加幾個黑色油滴
+{const o=G.petro;G.petro=()=>o()+dr(14,22,.8)+dr(104,52,.8)+dr(98,92,.7)}
+Object.assign(SPEC,{土地改革:'farmerPair',靠天吃飯:'shade',興建紡織工廠:'spinning',興建鐵路:'rails',關稅保護:'noGoods',接受外國援助:'handsGive',保護內銷市場:'domeGoods',興建污水處理廠:'sewage',放任城市自由發展:'slum',開辦夜間識字班:'nightABC',興建火力發電廠:'boltFire',興建水力發電廠:'valleyDam',呼籲節約用電:'noPower',興建大煉鋼廠:'hbeams',不蓋重工業:'noFactory',制定環境保護法:'noCut',徵收碳稅:'cloud+tax',加強治安巡邏:'policecap',推動網路教育:'twoPCs',推動母語教育:'motherSpeak',推動新住民政策:'newRes',打造無障礙友善環境:'wheelchair',忽視少數群體:'eyesCover',提供技術援助:'techAid'});
+
+const f=(n,size,bg)=>iconSVG({n,fx:{}},size,{bg});f.SC=SC;return f;
+})();
+let icBg='#ffe9b8';
+const ICPAL=['#ffe9b8','#d9efc9','#cfe6ff','#ffd9e6','#e6dcff','#c9f0ee','#ffe0cc'];
 
 /* ---------- 開局 ---------- */
 let a={};
@@ -709,7 +897,7 @@ function drawA(){
 }
 function begin(){
  name=$('nm').value.trim()||'無名王國';
- st={...a};flags={};idx=0;spDone={};log=[];pol={};accPend=[];accDone={};lastAcc=-1;ulSeen={};ulNew={};
+ st={...a};flags={};idx=0;spDone={};log=[];pol={};accPend=[];accDone={};lastAcc=-1;ulSeen={};ulNew={};flagSrc={};
  $('start').classList.add('hide');$('game').classList.remove('hide');
  $('cn').textContent='👑 '+name;
  initMap();drawStats({});nextEv();
@@ -718,6 +906,7 @@ function begin(){
 /* ---------- 遊戲流程 ---------- */
 const ok=o=>o.req.every(([k,op,v])=>op=='>'?st[k]>v:st[k]<v);
 function drawStats(d){
+ $('mini').innerHTML=S.map(s=>`<span title="${s[1]}">${s[2]} ${st[s[0]]}</span>`).join('');
  $('stats').innerHTML=S.map(s=>{const k=s[0],c=d[k];
   return `<div class="row"><span class="nm">${s[2]} ${s[1]}</span><div class="bar"><i style="width:${st[k]}%"></i></div><span class="v">${st[k]}</span><span class="dl ${c>0?'up':'dn'}">${c?(c>0?'+':'')+c:''}</span></div>`}).join('');
 }
@@ -751,33 +940,38 @@ function nextEv(){
 }
 function optBtn(o,i){
  const can=ok(o);
- if(cur&&cur.acc)return `<button class="opt" onclick="pick(${i})"><b>${o.n}</b></button>`;
+ if(cur&&cur.acc)return `<button class="opt" onclick="pick(${i})"><span class="oi">${gameIcon(o.n,56,icBg)}</span><span class="ot"><b>${o.n}</b></span></button>`;
  const cd=o.req.length?o.req.map(([k,op,v])=>{const m=st[k]>v;return N[k]+'＞'+v+(m?' ✓':' ✗（現在'+st[k]+'）')}).join('、'):'無條件';
- const hint=(o.l||[]).some(x=>flags[x[0]])?'<div class="lkt">🔗 這個選擇可能受到先前決定的影響</div>':'';
- return `<button class="opt ${can?'':'lk'}" ${can?'':'disabled'} onclick="pick(${i})"><b>${can?'':'🔒 '}${o.n}</b><div class="cd mu">條件：${cd}</div>${can?hint:''}</button>`;
+ const rf=relFlags(o),hint=rf.length?`<div class="lkt">🔗 可能與你先前的選擇有關：${[...new Set(rf.map(f=>'【'+flagSrc[f].n+'】（'+flagSrc[f].era+'）'))].join('、')}</div>`:'';
+ return `<button class="opt ${can?'':'lk'}" ${can?'':'disabled'} onclick="pick(${i})"><span class="oi">${gameIcon(o.n,56,icBg)}</span><span class="ot"><b>${can?'':'🔒 '}${o.n}</b><div class="cd mu">條件：${cd}</div>${can?hint:''}</span></button>`;
 }
 function showEv(){
  mode='choose';
+ icBg=cur.acc?'#ffd0c8':(cur.main?ICPAL[idx%ICPAL.length]:'#ffe0cc');
  const rs=[];
  curOpts=cur.opts.concat(rs);
- $('ev').innerHTML=`<div class="era">${cur.era}</div><h2 style="margin:.2em 0">${cur.title}</h2><p>${cur.txt}</p>`+
+ $('ev').innerHTML=`<div class="era">${cur.era}</div><h2 style="margin:.2em 0">${cur.acc?'<span class="oi" style="display:inline-block;vertical-align:middle;margin-right:8px">'+gameIcon(cur.title,56,'#ffd0c8')+'</span>':''}${cur.title}</h2><p>${cur.txt}</p>`+
   cur.opts.map((o,i)=>optBtn(o,i)).join('')+
   (rs.length?`<div class="era" style="margin-top:14px">🆘 國家危機！可以用強項換取補救：</div>`+rs.map((o,j)=>optBtn(o,cur.opts.length+j)).join(''):'');
  drawPol();
 }
 function pick(i){
- mode="result";const o=curOpts[i],d={},L=(o.l||[]).filter(x=>flags[x[0]]),tot={...o.fx};
+ mode="result";const o=curOpts[i],d={},L=linkList(o),tot={...o.fx};
  L.forEach(x=>{for(const k in x[1])tot[k]=(tot[k]||0)+x[1][k]});
  for(const k in tot){const b=st[k];st[k]=Math.max(0,Math.min(100,b+tot[k]));d[k]=st[k]-b}
- if(o.flag)o.flag.split(',').forEach(f=>flags[f]=1);
+ if(o.flag)o.flag.split(',').forEach(f=>{flags[f]=1;flagSrc[f]={n:o.n,era:cur.era}});
+ if(o.clr){o.clr.forEach(f=>delete flags[f]);if(o.clr.includes('mine'))flags.factory=!!(flags.textile||flags.epz)}
  addBuild(o.n);
  if(ACC[o.n]&&!accDone[o.n]&&!accPend.includes(o.n))accPend.push(o.n);
  if(cur.main)idx++;
  log.push({t:cur.title,n:o.n,sp:!cur.main,rs:o.rs,ac:cur.acc});
  const ul=checkUL();
  drawStats(d);drawPol();
- const lk=L.map(x=>{const v=Object.values(x[1]).reduce((p,q)=>p+q,0);return `<div class="res lnk" style="border-left-color:${v>=0?'var(--good)':'var(--bad)'}">🔗 <b>連鎖效應：</b>${x[2]}</div>`}).join('');
- $('ev').innerHTML=`<div class="era">${cur.era}・${cur.title}</div><p>你選擇了：<b>${o.n}</b></p><div class="res">${o.res}</div>${(GL[o.n]||[]).length?'<div class="gl">📖 <b>小知識</b>'+GL[o.n].map(g=>`<div><b>【${g[0]}】</b>${g[1]}</div>`).join('')+'</div>':''}${lk}${ul}<div class="chg">${Object.keys(d).map(k=>`<span class="${d[k]>=0?'up':'dn'}">${N[k]} ${d[k]>0?'+':''}${d[k]}</span>`).join('')}</div><button class="pri" onclick="nextEv()">下一個事件 ▶</button>`;
+ const sg=x=>Object.values(x[1]).reduce((p,q)=>p+q,0);
+ const lk=L.map((x,j)=>{const v=sg(x),pre=j>0&&(v>=0)!=(sg(L[j-1])>=0)?'不過，':'';
+  const sr=[...new Set((x[0]?[x[0]]:(x[3]||[])).filter(f=>flagSrc[f]).map(f=>'【'+flagSrc[f].n+'】'))],src=sr.length?`<span class="mu">（因為你先前選了${sr.join('、')}）</span>`:'';
+  return `<div class="res lnk" style="border-left-color:${v>=0?'var(--good)':'var(--bad)'}">🔗 <b>連鎖效應</b>${src}：${pre}${x[2]}</div>`}).join('');
+ $('ev').innerHTML=`<div class="era">${cur.era}・${cur.title}</div><p style="display:flex;align-items:center;gap:10px"><span class="oi">${gameIcon(o.n,56,icBg)}</span><span>你選擇了：<b>${o.n}</b></span></p><div class="res">${o.res}</div>${(GL[o.n]||[]).length?'<div class="gl">📖 <b>小知識</b>'+GL[o.n].map(g=>`<div><b>【${g[0]}】</b>${g[1]}</div>`).join('')+'</div>':''}${lk}${o.clr?'<div class="res"><b>📌 國家狀態改變：</b>這個決定之後，與它相關的連鎖效應將不再發生。</div>':''}${ul}<div class="chg">${Object.keys(d).map(k=>`<span class="${d[k]>=0?'up':'dn'}">${N[k]} ${d[k]>0?'+':''}${d[k]}</span>`).join('')}</div><button class="pri" onclick="nextEv()">下一個事件 ▶</button>`;
  drawTL(-1);
 }
 const esc=t=>t.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
